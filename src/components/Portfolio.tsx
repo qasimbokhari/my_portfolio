@@ -1,7 +1,66 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { Project } from "../types";
 import { projectsData } from "../data/portfolioData";
+
+interface ProjectItemProps {
+  project: Project;
+  setSelectedProject: React.Dispatch<React.SetStateAction<Project | null>>;
+}
+
+const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Track the scroll position of this project item relative to the viewport
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Smooth scroll translation for subtle, premium parallax
+  const y = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+
+  return (
+    <div
+      ref={containerRef}
+      onClick={() => setSelectedProject(project)}
+      className="project-item"
+    >
+      <motion.div style={{ y }} className="project-thumb-wrapper">
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          loading="lazy"
+          decoding="async"
+          className="project-thumb"
+          referrerPolicy="no-referrer"
+        />
+      </motion.div>
+      <div className="project-overlay">
+        <span className="project-cat">{project.category}</span>
+        <h2 className="project-title">
+          {project.title.split(" ").map((word, wIdx) => {
+            if (wIdx % 2 === 1) return <em key={wIdx}>{word} </em>;
+            return <span key={wIdx}>{word} </span>;
+          })}
+        </h2>
+        <p className="project-desc">{project.description}</p>
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setSelectedProject(project);
+          }}
+          className="project-cta"
+        >
+          <span className="project-cta-line"></span>
+          View Project
+        </a>
+      </div>
+    </div>
+  );
+}
 
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -55,42 +114,11 @@ export default function Portfolio() {
 
       <div className="project-reel">
         {projectsData.map((project) => (
-          <div
+          <ProjectItem
             key={project.id}
-            onClick={() => setSelectedProject(project)}
-            className="project-item"
-          >
-            <img
-              src={project.thumbnail}
-              alt={project.title}
-              loading="lazy"
-              decoding="async"
-              className="project-thumb"
-              referrerPolicy="no-referrer"
-            />
-            <div className="project-overlay">
-              <span className="project-cat">{project.category}</span>
-              <h2 className="project-title">
-                {project.title.split(" ").map((word, wIdx) => {
-                  if (wIdx % 2 === 1) return <em key={wIdx}>{word} </em>;
-                  return <span key={wIdx}>{word} </span>;
-                })}
-              </h2>
-              <p className="project-desc">{project.description}</p>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setSelectedProject(project);
-                }}
-                className="project-cta"
-              >
-                <span className="project-cta-line"></span>
-                View Project
-              </a>
-            </div>
-          </div>
+            project={project}
+            setSelectedProject={setSelectedProject}
+          />
         ))}
       </div>
 
