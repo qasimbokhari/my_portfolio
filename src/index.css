@@ -791,8 +791,20 @@ section { padding: 120px 0; }
     background: var(--deep) !important; /* Continuous background to remove gaps */
   }
   .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(12, 1fr) !important;
     gap: 24px !important;
+  }
+  .testimonial-card:nth-child(4n+1) {
+    grid-column: span 12 !important;
+  }
+  .testimonial-card:nth-child(4n+2) {
+    grid-column: span 6 !important;
+  }
+  .testimonial-card:nth-child(4n+3) {
+    grid-column: span 6 !important;
+  }
+  .testimonial-card:nth-child(4n+4) {
+    grid-column: span 12 !important;
   }
 
   /* Contact Section & Form (Tablet) */
@@ -1097,6 +1109,7 @@ section { padding: 120px 0; }
     gap: 16px !important;
   }
   .testimonial-card {
+    grid-column: span 1 !important;
     padding: 20px !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1655,19 +1668,64 @@ input, textarea {
 }
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(12, 1fr);
   gap: 32px;
   margin-bottom: 60px;
 }
 .testimonial-card {
   background: var(--surface);
   border: 1px solid var(--gold-dim);
-  padding: 32px;
-  transition: transform 0.3s var(--ease-film), border-color 0.3s var(--ease-film);
+  padding: clamp(24px, 3.5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s var(--ease-film), border-color 0.3s var(--ease-film), box-shadow 0.3s var(--ease-film);
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-card:nth-child(4n+1) {
+  grid-column: span 12;
+}
+.testimonial-card:nth-child(4n+2) {
+  grid-column: span 6;
+}
+.testimonial-card:nth-child(4n+3) {
+  grid-column: span 6;
+}
+.testimonial-card:nth-child(4n+4) {
+  grid-column: span 12;
 }
 .testimonial-card:hover {
   transform: translateY(-5px);
   border-color: var(--gold);
+  box-shadow: 0 12px 40px -15px rgba(197, 160, 89, 0.15);
+}
+.testimonial-card::before {
+  content: "“";
+  position: absolute;
+  top: -15px;
+  right: 25px;
+  font-family: var(--font-display);
+  font-size: 8rem;
+  color: var(--gold);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+}
+/* Desktop Asymmetric Spanning */
+@media (min-width: 1024px) {
+  .testimonial-card:nth-child(4n+1) {
+    grid-column: span 8; /* Fatima Masood - Very long (3 paragraphs) */
+  }
+  .testimonial-card:nth-child(4n+2) {
+    grid-column: span 4; /* Mansoor Ahmed - Very short (1 paragraph) */
+  }
+  .testimonial-card:nth-child(4n+3) {
+    grid-column: span 7; /* Baria Mubashar - Medium-long */
+  }
+  .testimonial-card:nth-child(4n+4) {
+    grid-column: span 5; /* Ismail Malik - Medium */
+  }
 }
 .testimonial-text {
   font-size: 0.95rem;
@@ -1675,6 +1733,7 @@ input, textarea {
   color: var(--silver);
   font-style: italic;
   margin-bottom: 24px;
+  white-space: pre-line;
 }
 .testimonial-author {
   display: flex;

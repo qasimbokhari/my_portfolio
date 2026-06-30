@@ -5,7 +5,28 @@ import { initialTestimonials } from "../data/portfolioData";
 import { X, Star } from "lucide-react";
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>(initialTestimonials);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(() => {
+    const saved = localStorage.getItem("portfolio_testimonials");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          // Merge default initialTestimonials with custom ones from localStorage
+          const merged = [...initialTestimonials];
+          parsed.forEach((item: Testimonial) => {
+            // Avoid duplicates by matching id, or author + text combination
+            if (!merged.some(m => m.id === item.id || (m.author === item.author && m.text === item.text))) {
+              merged.push(item);
+            }
+          });
+          return merged;
+        }
+      } catch (e) {
+        console.error("Failed to parse saved testimonials", e);
+      }
+    }
+    return initialTestimonials;
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Form states
@@ -30,7 +51,15 @@ export default function Testimonials() {
       role: role.trim() || "Independent Creator"
     };
 
-    setTestimonials((prev) => [...prev, newReview]);
+    setTestimonials((prev) => {
+      const updated = [...prev, newReview];
+      // Store only user-submitted reviews in localStorage (not defaults)
+      const userSubmitted = updated.filter(
+        item => !initialTestimonials.some(initial => initial.id === item.id || (initial.author === item.author && initial.text === item.text))
+      );
+      localStorage.setItem("portfolio_testimonials", JSON.stringify(userSubmitted));
+      return updated;
+    });
     setSuccess(true);
     setError("");
     
