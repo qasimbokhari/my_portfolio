@@ -5,6 +5,14 @@ import { projectsData } from "../data/portfolioData";
 
 const ProjectModal = lazy(() => import("./ProjectModal"));
 
+const getSrcSet = (url: string) => {
+  const lastDot = url.lastIndexOf(".");
+  if (lastDot === -1) return undefined;
+  const base = url.substring(0, lastDot);
+  const ext = url.substring(lastDot);
+  return `${base}-480w${ext} 480w, ${base}-960w${ext} 960w, ${base}-1600w${ext} 1600w`;
+};
+
 interface ProjectItemProps {
   project: Project;
   setSelectedProject: React.Dispatch<React.SetStateAction<Project | null>>;
@@ -42,8 +50,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
       aria-label={`View project: ${project.title}`}
     >
       <motion.div style={{ y }} className="project-thumb-wrapper">
+        {/* Note: Resized width-suffixed files must be generated and uploaded to the R2 bucket at the same path before this takes effect. */}
         <img
           src={project.thumbnail}
+          srcSet={getSrcSet(project.thumbnail)}
+          sizes="(max-width: 480px) 100vw, (max-width: 767px) 50vw, 100vw"
           alt={project.title}
           loading="lazy"
           decoding="async"
