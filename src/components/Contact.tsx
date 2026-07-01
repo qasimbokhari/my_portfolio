@@ -8,6 +8,7 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [projectType, setProjectType] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
   
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -16,6 +17,18 @@ export default function Contact() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setError("");
+
+    // If honeypot is filled, silently simulate success to fool bots without sending EmailJS requests
+    if (website) {
+      setSuccess(true);
+      setName("");
+      setPhone("");
+      setEmail("");
+      setProjectType("");
+      setMessage("");
+      setWebsite("");
+      return;
+    }
 
     if (!name.trim() || !email.trim() || !message.trim()) {
       setError("Please fill in your name, email address, and project details.");
@@ -83,7 +96,7 @@ export default function Contact() {
                   <Phone className="w-3.5 h-3.5" />
                   Phone
                 </span>
-                <a href="tel:+923365261531" className="contact-item-val clickable">
+                <a href="tel:+923365261531" className="contact-item-val">
                   +92 336 526 1531
                 </a>
               </div>
@@ -93,7 +106,7 @@ export default function Contact() {
                   <Mail className="w-3.5 h-3.5" />
                   Email
                 </span>
-                <a href="mailto:qasimbokhari2005@gmail.com" className="contact-item-val clickable">
+                <a href="mailto:qasimbokhari2005@gmail.com" className="contact-item-val">
                   qasimbokhari2005@gmail.com
                 </a>
               </div>
@@ -103,7 +116,7 @@ export default function Contact() {
                   <Instagram className="w-3.5 h-3.5" />
                   Instagram
                 </span>
-                <a href="https://instagram.com/qasim.arw" target="_blank" rel="noopener noreferrer" className="contact-item-val clickable">
+                <a href="https://instagram.com/qasim.arw" target="_blank" rel="noopener noreferrer" className="contact-item-val">
                   @qasim.arw
                 </a>
               </div>
@@ -138,13 +151,27 @@ export default function Contact() {
                 </p>
                 <button
                   onClick={() => setSuccess(false)}
-                  className="mt-8 border border-gold-dim text-gold hover:border-gold px-6 py-2.5 text-[10px] uppercase tracking-widest cursor-none clickable"
+                  className="mt-8 border border-gold-dim text-gold hover:border-gold px-6 py-2.5 text-[10px] uppercase tracking-widest cursor-pointer"
                 >
                   Submit Another
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
+                {/* Honeypot field for bot protection */}
+                <div style={{ position: "absolute", left: "-5000px", top: "auto", width: "1px", height: "1px", overflow: "hidden" }} aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    type="text"
+                    name="website"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    autoComplete="off"
+                    tabIndex={-1}
+                  />
+                </div>
+
                 {error && (
                   <div className="p-4 bg-gold/10 border border-gold-dim border-l-2 border-l-gold text-silver text-xs flex items-center gap-2 mb-6">
                     <AlertTriangle className="w-4 h-4 text-gold shrink-0" />
@@ -163,7 +190,7 @@ export default function Contact() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Ahmad Ali"
-                      className="form-input clickable"
+                      className="form-input"
                     />
                   </div>
 
@@ -176,7 +203,7 @@ export default function Contact() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="e.g. +92 300 000 0000"
-                      className="form-input clickable"
+                      className="form-input"
                     />
                   </div>
                 </div>
@@ -191,7 +218,7 @@ export default function Contact() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="e.g. you@example.com"
-                    className="form-input clickable"
+                    className="form-input"
                   />
                 </div>
 
@@ -204,7 +231,7 @@ export default function Contact() {
                     value={projectType}
                     onChange={(e) => setProjectType(e.target.value)}
                     placeholder="Wedding / Commercial / Music Video / Other"
-                    className="form-input clickable"
+                    className="form-input"
                   />
                 </div>
 
@@ -217,14 +244,14 @@ export default function Contact() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Date, location, brief concept..."
-                    className="form-textarea clickable"
+                    className="form-textarea"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="form-submit clickable"
+                  className="form-submit cursor-pointer"
                 >
                   {submitting ? "Sending..." : "Book a Free Consultation"}
                 </button>

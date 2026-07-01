@@ -4,11 +4,19 @@ export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setVisible(true);
-      } else {
-        setVisible(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 300) {
+            setVisible(true);
+          } else {
+            setVisible(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -22,7 +30,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact Qasim Bokhari on WhatsApp"
-      className={`whatsapp-float fixed bottom-[30px] right-[30px] w-[60px] h-[60px] bg-[#111111] text-gold border border-gold-dim hover:border-gold rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-[999] cursor-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0,1)] hover:scale-108 ${
+      className={`whatsapp-float fixed bottom-[30px] right-[30px] w-[60px] h-[60px] bg-[#111111] text-gold border border-gold-dim hover:border-gold rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-[999] cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0,1)] hover:scale-108 ${
         visible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}
     >

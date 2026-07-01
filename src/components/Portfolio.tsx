@@ -18,13 +18,26 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
   });
 
   // Smooth scroll translation for subtle, premium parallax
-  const y = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+  const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const y = prefersReduced ? "0%" : parallaxY;
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setSelectedProject(project);
+    }
+  };
 
   return (
     <div
       ref={containerRef}
       onClick={() => setSelectedProject(project)}
-      className="project-item"
+      onKeyDown={handleKeyDown}
+      className="project-item focus:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+      tabIndex={0}
+      role="button"
+      aria-label={`View project: ${project.title}`}
     >
       <motion.div style={{ y }} className="project-thumb-wrapper">
         <img
@@ -34,6 +47,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
           decoding="async"
           className="project-thumb"
           referrerPolicy="no-referrer"
+          onContextMenu={(e) => e.preventDefault()}
+          draggable={false}
         />
       </motion.div>
       <div className="project-overlay">
@@ -53,6 +68,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
             setSelectedProject(project);
           }}
           className="project-cta"
+          tabIndex={-1}
         >
           <span className="project-cta-line"></span>
           View Project
@@ -65,6 +81,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [videoOrientations, setVideoOrientations] = useState<Record<string, "vertical" | "horizontal">>({});
+
+  const lastActiveElementRef = useRef<HTMLElement | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleLoadedMetadata = (videoUrl: string, e: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = e.currentTarget;
@@ -79,16 +98,30 @@ export default function Portfolio() {
     });
   };
 
-  // Lock body scroll when modal is open
+  // Lock body scroll and track focus states
   useEffect(() => {
     if (selectedProject) {
+      // Save the currently focused element
+      lastActiveElementRef.current = document.activeElement as HTMLElement;
       document.body.style.overflow = "hidden";
+
+      // Focus the close button once the modal is rendered
+      const timer = setTimeout(() => {
+        const closeBtn = modalRef.current?.querySelector(".modal-close") as HTMLElement;
+        if (closeBtn) {
+          closeBtn.focus();
+        }
+      }, 50);
+
+      return () => clearTimeout(timer);
     } else {
       document.body.style.overflow = "";
+      // Restore focus when modal closes
+      if (lastActiveElementRef.current) {
+        lastActiveElementRef.current.focus();
+        lastActiveElementRef.current = null;
+      }
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [selectedProject]);
 
   // Handle Escape key to close modal
@@ -101,6 +134,92 @@ export default function Portfolio() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  // Sync URL hash with selectedProject state
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith("#portfolio/")) {
+        const idOrSlug = hash.replace("#portfolio/", "");
+        const found = projectsData.find((p) => {
+          const slug = p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+          return (
+            String(p.id) === idOrSlug ||
+            slug === idOrSlug ||
+            idOrSlug === `${p.id}-${slug}`
+          );
+        });
+
+        if (found) {
+          setSelectedProject((current) => (current?.id === found.id ? current : found));
+        } else {
+          setSelectedProject((current) => (current === null ? null : null));
+        }
+      } else {
+        setSelectedProject((current) => (current === null ? null : null));
+      }
+    };
+
+    // Initial check on load
+    handleHashChange();
+
+    window.addEventListener("popstate", handleHashChange);
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("popstate", handleHashChange);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
+  // Update URL hash when selectedProject state changes
+  useEffect(() => {
+    if (selectedProject) {
+      const slug = selectedProject.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      const targetHash = `#portfolio/${selectedProject.id}-${slug}`;
+      if (window.location.hash !== targetHash) {
+        window.history.pushState({ isModal: true }, "", targetHash);
+      }
+    } else {
+      if (window.location.hash.startsWith("#portfolio/")) {
+        if (window.history.state && window.history.state.isModal) {
+          window.history.back();
+        } else {
+          window.history.pushState(null, "", window.location.pathname + window.location.search);
+        }
+      }
+    }
+  }, [selectedProject]);
+
+  const handleModalKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Tab") {
+      if (!modalRef.current) return;
+
+      const focusableSelector = 'button, [href], input, select, textarea, video[controls], [tabindex]:not([tabindex="-1"])';
+      const focusableElements = Array.from(
+        modalRef.current.querySelectorAll(focusableSelector)
+      ) as HTMLElement[];
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    } else if (e.key === "Escape") {
+      setSelectedProject(null);
+    }
+  };
 
   return (
     <section id="portfolio">
@@ -125,11 +244,15 @@ export default function Portfolio() {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
+            ref={modalRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0, 1] }}
             className="project-modal open"
+            role="dialog"
+            aria-modal="true"
+            onKeyDown={handleModalKeyDown}
           >
             <button
               className="modal-close"
@@ -143,7 +266,11 @@ export default function Portfolio() {
                   src={selectedProject.thumbnail}
                   alt={selectedProject.title}
                   style={{ filter: "brightness(0.5)" }}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable={false}
                 />
               </div>
               <div className="modal-hero-content">
@@ -204,8 +331,11 @@ export default function Portfolio() {
                     src={imgUrl}
                     alt={`${selectedProject.title} frame ${iIdx}`}
                     className="modal-gallery-img"
+                    loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
+                    onContextMenu={(e) => e.preventDefault()}
+                    draggable={false}
                   />
                 ))}
               </div>

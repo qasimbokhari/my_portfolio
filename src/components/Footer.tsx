@@ -12,7 +12,7 @@ export default function Footer() {
           href="https://instagram.com/qasim.arw"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-sans text-[11px] tracking-[0.15em] text-silver hover:text-gold no-underline transition-colors duration-300 cursor-none clickable uppercase"
+          className="font-sans text-[11px] tracking-[0.15em] text-silver hover:text-gold no-underline transition-colors duration-300 cursor-pointer uppercase"
         >
           Instagram
         </a>
@@ -20,13 +20,13 @@ export default function Footer() {
           href="https://wa.me/923365261531"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-sans text-[11px] tracking-[0.15em] text-silver hover:text-gold no-underline transition-colors duration-300 cursor-none clickable uppercase"
+          className="font-sans text-[11px] tracking-[0.15em] text-silver hover:text-gold no-underline transition-colors duration-300 cursor-pointer uppercase"
         >
           WhatsApp
         </a>
         <a
           href="mailto:qasimbokhari2005@gmail.com"
-          className="font-sans text-[11px] tracking-[0.15em] text-silver hover:text-gold no-underline transition-colors duration-300 cursor-none clickable uppercase"
+          className="font-sans text-[11px] tracking-[0.15em] text-silver hover:text-gold no-underline transition-colors duration-300 cursor-pointer uppercase"
         >
           Email
         </a>

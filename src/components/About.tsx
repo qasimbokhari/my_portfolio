@@ -21,11 +21,13 @@ export default function About() {
           <div className="about-image-block">
             <div className="about-image-wrap">
               <img
-                src="https://pub-3b7f468f2890447292a956c1c03cef0e.r2.dev/photos/pp.jpg"
+                src="https://media.qasim.live/photos/pp.jpg"
                 alt="Qasim Bokhari"
                 loading="lazy"
                 decoding="async"
                 referrerPolicy="no-referrer"
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
               />
             </div>
           </div>

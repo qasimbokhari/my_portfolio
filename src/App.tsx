@@ -74,6 +74,16 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const elements = document.querySelectorAll(".reveal, .project-item");
+
+    if (prefersReduced) {
+      elements.forEach((el) => {
+        el.classList.add("in-view", "visible");
+      });
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -85,22 +95,10 @@ export default function App() {
       { threshold: 0.15 }
     );
 
-    const observeElements = () => {
-      const elements = document.querySelectorAll(".reveal, .project-item");
-      elements.forEach((el) => observer.observe(el));
-    };
-
-    observeElements();
-
-    const mutationObserver = new MutationObserver(() => {
-      observeElements();
-    });
-
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
+    elements.forEach((el) => observer.observe(el));
 
     return () => {
       observer.disconnect();
-      mutationObserver.disconnect();
     };
   }, []);
 

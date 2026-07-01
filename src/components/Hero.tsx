@@ -1,28 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(max-width: 480px)").matches;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mediaQuery = window.matchMedia("(max-width: 480px)");
+    
+    const handler = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
   return (
     <section id="hero">
       {/* Background Video Wrap */}
       <div className="hero-video-wrap">
-        <video
-          src="https://pub-3b7f468f2890447292a956c1c03cef0e.r2.dev/hero_video.mp4"
-          className="hero-background-video desktop-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-        <video
-          src="https://pub-3b7f468f2890447292a956c1c03cef0e.r2.dev/wild.mp4"
-          className="hero-background-video mobile-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
+        {isMobile ? (
+          <video
+            src="https://media.qasim.live/wild.mp4"
+            className="hero-background-video mobile-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="https://media.qasim.live/photos/thumb03.jpg"
+          />
+        ) : (
+          <video
+            src="https://media.qasim.live/hero_video.mp4"
+            className="hero-background-video desktop-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="https://media.qasim.live/photos/thum01.jpg"
+          />
+        )}
       </div>
 
       {/* Cinematic Letterbox borders */}
@@ -43,7 +67,7 @@ export default function Hero() {
           Cinematographer &nbsp;·&nbsp; Photographer &nbsp;·&nbsp; Editor
         </p>
         
-        <a href="#portfolio" className="hero-cta clickable">
+        <a href="#portfolio" className="hero-cta">
           View Portfolio
         </a>
       </div>

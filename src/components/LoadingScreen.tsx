@@ -5,12 +5,28 @@ export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Elegant deliberate delay to establish majestic mood and build layout frames
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1800);
+    let completed = false;
 
-    return () => clearTimeout(timer);
+    const handleComplete = () => {
+      if (!completed) {
+        completed = true;
+        setLoading(false);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      handleComplete();
+    } else {
+      window.addEventListener("load", handleComplete);
+    }
+
+    // Shorter fallback timeout of 600ms as a max-wait safety net
+    const fallbackTimer = setTimeout(handleComplete, 600);
+
+    return () => {
+      window.removeEventListener("load", handleComplete);
+      clearTimeout(fallbackTimer);
+    };
   }, []);
 
   return (

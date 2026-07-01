@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -41,12 +40,8 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── CURSOR RESTORATION ─── */
-.cursor-none {
-  cursor: auto !important;
-}
-.clickable, a, button, [role="button"], .project-item, .whatsapp-float, .form-submit, .modal-close, .testimonial-submit-btn, .review-modal-close {
-  cursor: pointer !important;
+a, button, [role="button"], .project-item, .whatsapp-float, .form-submit, .modal-close, .testimonial-submit-btn, .review-modal-close {
+  cursor: pointer;
 }
 
 /* ─── NAV ─── */
@@ -1200,9 +1195,6 @@ section { padding: 120px 0; }
     text-align: center;
   }
   .footer-links { justify-content: center; }
-  body { cursor: auto; }
-  #cursor, #cursor-ring { display: none; }
-  .form-submit, .modal-close, .whatsapp-float { cursor: pointer; }
 }
 
 /* ─── ABOUT ─── */

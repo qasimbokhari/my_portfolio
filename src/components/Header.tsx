@@ -6,20 +6,28 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const sections = ["hero", "portfolio", "about", "testimonials", "contact"];
-      let currentSection = "hero";
-      
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 200) {
-            currentSection = section;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sections = ["hero", "portfolio", "about", "testimonials", "contact"];
+          let currentSection = "hero";
+          
+          for (const section of sections) {
+            const el = document.getElementById(section);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              if (rect.top <= 200) {
+                currentSection = section;
+              }
+            }
           }
-        }
+          setActiveSection(currentSection);
+          ticking = false;
+        });
+        ticking = true;
       }
-      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -51,7 +59,7 @@ export default function Header() {
 
   return (
     <nav className={menuOpen ? "nav-open" : ""}>
-      <a href="#hero" className="nav-logo clickable" onClick={handleLinkClick}>
+      <a href="#hero" className="nav-logo" onClick={handleLinkClick}>
         QB
       </a>
       
@@ -61,7 +69,7 @@ export default function Header() {
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className={`clickable ${activeSection === item.id ? "active" : ""}`}
+              className={activeSection === item.id ? "active" : ""}
               style={{ color: activeSection === item.id ? "var(--white)" : "" }}
             >
               {item.label}
@@ -72,7 +80,7 @@ export default function Header() {
 
       {/* Mobile Toggle Button */}
       <button
-        className="menu-toggle mobile-only clickable"
+        className="menu-toggle mobile-only"
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label="Toggle Navigation Menu"
       >
@@ -90,7 +98,7 @@ export default function Header() {
             >
               <a
                 href={`#${item.id}`}
-                className={`clickable ${activeSection === item.id ? "active" : ""}`}
+                className={activeSection === item.id ? "active" : ""}
                 onClick={handleLinkClick}
               >
                 {item.label}

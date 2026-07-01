@@ -88,7 +88,7 @@ export default function Testimonials() {
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="testimonial-submit-btn clickable"
+            className="testimonial-submit-btn cursor-pointer"
           >
             Write a Review
           </button>
@@ -123,7 +123,7 @@ export default function Testimonials() {
               {/* Close Button */}
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="review-modal-close clickable"
+                className="review-modal-close cursor-pointer"
               >
                 <X className="w-5 h-5 inline mr-2" /> Close
               </button>
@@ -157,7 +157,7 @@ export default function Testimonials() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Bilal Shah"
-                      className="form-input clickable"
+                      className="form-input"
                     />
                   </div>
 
@@ -170,7 +170,7 @@ export default function Testimonials() {
                       value={role}
                       onChange={(e) => setRole(e.target.value)}
                       placeholder="e.g. Producer, Creative Labs"
-                      className="form-input clickable"
+                      className="form-input"
                     />
                   </div>
 
@@ -184,7 +184,7 @@ export default function Testimonials() {
                           key={star}
                           type="button"
                           onClick={() => setRating(star)}
-                          className="text-gold cursor-none clickable"
+                          className="text-gold cursor-pointer"
                         >
                           <Star
                             className={`w-5 h-5 ${
@@ -205,13 +205,13 @@ export default function Testimonials() {
                       value={text}
                       onChange={(e) => setText(e.target.value)}
                       placeholder="Tell us about the project quality, timeline, and collaboration experience..."
-                      className="form-textarea clickable"
+                      className="form-textarea"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="form-submit clickable"
+                    className="form-submit cursor-pointer"
                   >
                     Submit Review
                   </button>
