@@ -298,6 +298,7 @@ export default function Portfolio() {
                       playsInline
                       preload="metadata"
                       muted={isAfterRain}
+                      {...{ referrerPolicy: "no-referrer" }}
                       className={orientation === "vertical" ? "video-vertical" : "video-horizontal"}
                       onLoadedMetadata={(e) => handleLoadedMetadata(vid, e)}
                       onVolumeChange={isAfterRain ? (e) => {

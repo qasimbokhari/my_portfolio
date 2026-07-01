@@ -34,6 +34,7 @@ export default function Hero() {
             playsInline
             preload="metadata"
             poster="https://media.qasim.live/photos/thumb03.jpg"
+            {...{ referrerPolicy: "no-referrer" }}
           />
         ) : (
           <video
@@ -45,6 +46,7 @@ export default function Hero() {
             playsInline
             preload="metadata"
             poster="https://media.qasim.live/photos/thum01.jpg"
+            {...{ referrerPolicy: "no-referrer" }}
           />
         )}
       </div>
