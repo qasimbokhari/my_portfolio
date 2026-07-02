@@ -181,10 +181,12 @@ export default function Contact() {
 
                 <div className="form-row">
                   <div className="form-group">
-                    <label className="form-label">
+                    <label htmlFor="name" className="form-label">
                       Your Name
                     </label>
                     <input
+                      id="name"
+                      name="name"
                       type="text"
                       required
                       value={name}
@@ -195,10 +197,12 @@ export default function Contact() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">
+                    <label htmlFor="phone" className="form-label">
                       Phone / WhatsApp
                     </label>
                     <input
+                      id="phone"
+                      name="phone"
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
@@ -209,10 +213,12 @@ export default function Contact() {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">
+                  <label htmlFor="email" className="form-label">
                     Email Address
                   </label>
                   <input
+                    id="email"
+                    name="email"
                     type="email"
                     required
                     value={email}
@@ -223,10 +229,12 @@ export default function Contact() {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">
+                  <label htmlFor="project-type" className="form-label">
                     Project Type
                   </label>
                   <input
+                    id="project-type"
+                    name="project-type"
                     type="text"
                     value={projectType}
                     onChange={(e) => setProjectType(e.target.value)}
@@ -236,10 +244,12 @@ export default function Contact() {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">
+                  <label htmlFor="message" className="form-label">
                     Tell Me About Your Project
                   </label>
                   <textarea
+                    id="message"
+                    name="message"
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
