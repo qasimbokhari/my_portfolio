@@ -9,8 +9,7 @@ const getSrcSet = (url: string) => {
   const lastDot = url.lastIndexOf(".");
   if (lastDot === -1) return undefined;
   const base = url.substring(0, lastDot);
-  const ext = url.substring(lastDot);
-  return `${base}-480w${ext} 480w, ${base}-960w${ext} 960w, ${base}-1600w${ext} 1600w`;
+  return `${base}-480w.webp 480w, ${base}-960w.webp 960w, ${base}-1600w.webp 1600w`;
 };
 
 interface ProjectItemProps {
