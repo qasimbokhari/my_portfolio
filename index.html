@@ -45,9 +45,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://media.qasim.live/photos/logo%20180%20x%20180.png" />
     <link rel="manifest" href="/manifest.json" />
 
+    <!-- Preload critical fonts above-the-fold -->
+    <link rel="preload" href="https://media.qasim.live/fonts/inter-normal-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="https://media.qasim.live/fonts/cormorant-garamond-normal-400.woff2" as="font" type="font/woff2" crossorigin />
+
     <!-- Preload LCP hero poster images -->
-    <link rel="preload" as="image" href="https://media.qasim.live/photos/thumb03.jpg" media="(max-width: 480px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="https://media.qasim.live/photos/thum01.jpg" media="(min-width: 481px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://media.qasim.live/photos/thumb01-1600w.webp" fetchpriority="high" />
 
     <title>Qasim Bokhari | Cinematographer & Photographer</title>
   </head>
