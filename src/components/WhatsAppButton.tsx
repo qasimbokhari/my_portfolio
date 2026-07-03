@@ -26,7 +26,7 @@ export default function WhatsAppButton() {
 
   return (
     <a
-      href="https://wa.me/923365261531"
+      href="https://wa.me/923395261532"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact Qasim Bokhari on WhatsApp"

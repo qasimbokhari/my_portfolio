@@ -4,8 +4,8 @@ export const projectsData: Project[] = [
   {
     id: 0,
     title: "Hostel Diaries",
-    category: "Short Film · Ongoing",
-    description: "An ongoing short film set inside hostel life, following the pressure, friendships, late nights, and quiet chaos that shape life away from home.",
+    category: "Narrative Short Film & Cinema · Ongoing",
+    description: "An ongoing narrative short film set inside student hostel life, demonstrating high-end visual storytelling and cinematic video production in Islamabad.",
     longDescription: "Hostel Diaries is an ongoing short film built around the restless world of hostel life: late-night conversations, pressure disguised as jokes, friendships formed out of survival, and the strange comfort of finding family away from home.\n\nTwo teasers have already been produced, offering the first look at the film's mood, characters, and tension. The complete short film is currently in progress and will be released very soon.",
     thumbnail: "https://media.qasim.live/photos/thum01.jpg",
     videos: [
@@ -22,8 +22,8 @@ export const projectsData: Project[] = [
   {
     id: 1,
     title: "NUST NEXUS",
-    category: "Marketing Video · 2025",
-    description: "A polished launch video for NUST NEXUS's newly opened store, built to capture the energy, utility, and student-driven pulse of the space.",
+    category: "Commercial Video Production · 2025",
+    description: "A polished launch video and marketing campaign for NUST NEXUS, capturing dynamic campus life and professional brand storytelling in Islamabad, Pakistan.",
     longDescription: "A marketing film created for NUST NEXUS and the launch of its newly opened store. The piece presents the space as more than a shop: a student hub built around convenience, movement, collaboration, and campus energy.\n\nThe edit combines clean product coverage, environmental details, and fast campus pacing to make the store feel active, useful, and immediately connected to student life.",
     thumbnail: "https://media.qasim.live/photos/thumb02.jpg",
     videos: [
@@ -39,8 +39,8 @@ export const projectsData: Project[] = [
   {
     id: 2,
     title: "Instagram Reels",
-    category: "Social Content · 2025",
-    description: "A collection of public Instagram reels exploring mood, pacing, and cinematic ideas in compact, scroll-stopping short-form edits.",
+    category: "Social Media & Reel Production · 2025",
+    description: "A collection of cinematic Instagram reels, vertical videos, and short-form edits optimized for high engagement and creative social media video production.",
     longDescription: "A collection of Instagram reels made for my public account, each built as a small visual experiment in pacing, rhythm, mood, and cinematic compression.\n\nThese edits explore how much atmosphere can fit inside a short format: from quiet waiting and creative blocks to motion-heavy cuts, emotional beats, and stylized everyday moments.",
     thumbnail: "https://media.qasim.live/photos/thumb03.jpg",
     videos: [
@@ -66,8 +66,8 @@ export const projectsData: Project[] = [
   {
     id: 3,
     title: "Aero Maverick",
-    category: "Team Reel · 2025",
-    description: "A team reel for Aeromaverick, a drone startup shaped around engineering ambition, aerial innovation, and the people building it forward.",
+    category: "Corporate Brand Film & Drone Video · 2025",
+    description: "A corporate brand film and drone cinematography showcase for Aeromaverick, a startup built around engineering ambition and aerial innovation.",
     longDescription: "A team reel for Aeromaverick, a drone startup driven by engineering, experimentation, and the ambition to build smarter aerial systems.\n\nThe film focuses on the people behind the technology: hands-on work, field energy, testing moments, and the sense of momentum that comes from a young team building something real.",
     thumbnail: "https://media.qasim.live/photos/thumb04.jpg",
     videos: [
@@ -83,8 +83,8 @@ export const projectsData: Project[] = [
   {
     id: 4,
     title: "NUST Orientation",
-    category: "Motion Design · 2025",
-    description: "A motion-led logo reveal for NUST Orientation 25, designed to introduce the event identity with energy, polish, and anticipation.",
+    category: "Commercial Motion Design & Graphics · 2025",
+    description: "A premium motion-led brand logo reveal and event opener, showcasing high-end commercial animation, visual effects, and professional video editing.",
     longDescription: "A logo reveal for NUST Orientation 25, created to give the event identity a cinematic opening moment: sharp, energetic, and polished enough to feel like the start of something important.\n\nThe animation uses motion, timing, and atmosphere to turn a static mark into a launch cue for the orientation experience, setting the tone for incoming students before the event even begins.",
     thumbnail: "https://media.qasim.live/photos/thumb05.jpg",
     videos: [
@@ -100,8 +100,8 @@ export const projectsData: Project[] = [
   {
     id: 5,
     title: "Kashmir Travel",
-    category: "Travel Photography · 2025",
-    description: "A travel photography series from Kashmir, moving through mountain roads, still valleys, cold light, and the quiet scale of the landscape.",
+    category: "Travel & Landscape Photography · 2025",
+    description: "A professional travel and landscape photography series capturing mountain vistas, natural light, and the quiet scale of Kashmir's outdoor terrain.",
     longDescription: "Kashmir Travel is a photography series shaped by mountain air, winding roads, quiet villages, cold water, and the kind of light that makes every turn feel like a frame waiting to happen.\n\nThe collection moves between broad landscapes and smaller human details, aiming to preserve both the scale of the valley and the intimacy of travelling through it.",
     thumbnail: "https://media.qasim.live/photos/thumb06.jpg",
     videos: null,
@@ -142,8 +142,8 @@ export const projectsData: Project[] = [
   {
     id: 6,
     title: "After Rain",
-    category: "Photography · 2025",
-    description: "A spontaneous rain-washed photography spree beneath a rainbow, capturing fresh streets, reflective light, and the brief magic after a storm.",
+    category: "Fine Art & Street Photography · 2025",
+    description: "A fine art photography series capturing wet cityscapes, street portraits, and professional low-light cinematography frames in Islamabad.",
     longDescription: "After Rain came from a spontaneous photography spree just after a storm, when the streets were still reflective and a rainbow briefly turned the whole scene into something unreal.\n\nThe series follows that small window of magic after rainfall: washed colors, wet textures, softened skies, and the feeling that ordinary places can suddenly look cinematic.",
     thumbnail: "https://media.qasim.live/photos/thumb07.jpg",
     videos: [
@@ -168,8 +168,8 @@ export const projectsData: Project[] = [
   {
     id: 7,
     title: "Event Showcase",
-    category: "Event Photography · 2025",
-    description: "A showcase of event photography across gatherings, ceremonies, and public moments, focused on atmosphere, emotion, and clean coverage.",
+    category: "Corporate Event Photography & Videography · 2025",
+    description: "Professional event photography and corporate coverage capturing live moments, ceremonies, gatherings, and high-profile events in Islamabad, Pakistan.",
     longDescription: "A photography showcase built from different event environments, focused on clean coverage, atmosphere, and the small moments that make a gathering feel alive.\n\nThe work moves between formal details and candid reactions, preserving not just what happened, but how each event felt in the room.",
     thumbnail: "https://media.qasim.live/photos/thumb08.jpeg",
     videos: null,
@@ -211,8 +211,8 @@ export const projectsData: Project[] = [
   {
     id: 8,
     title: "Saidpur Shoot",
-    category: "Portrait Photography · 2025",
-    description: "A portrait shoot in Saidpur, using the village's textured streets, warm walls, and heritage setting as a natural visual backdrop.",
+    category: "Portrait & Wedding Photography · 2025",
+    description: "A beautiful wedding and professional portrait photography session in Saidpur, utilizing rustic heritage backdrops for stunning couple photoshoots.",
     longDescription: "A portrait session photographed in Saidpur, using the location's textured walls, old streets, and warm heritage atmosphere as a natural backdrop.\n\nThe shoot balances place and personality: portraits that feel grounded in the character of Saidpur while still keeping the subject at the center of every frame.",
     thumbnail: "https://media.qasim.live/photos/thumb09.jpg",
     videos: null,
@@ -238,8 +238,8 @@ export const projectsData: Project[] = [
   {
     id: 9,
     title: "Selected Works",
-    category: "Photography · Selected",
-    description: "A selected photography collection pulling together standout frames from portraits, travel, events, streets, and personal visual studies.",
+    category: "Commercial Photography & Visual Portfolio",
+    description: "A curated commercial photography portfolio spanning premium portraiture, travel landscapes, wedding shoots, and visual storytelling.",
     longDescription: "A selected photography collection pulled from different bodies of work: portraits, travel frames, event details, streets, landscapes, and personal experiments.\n\nRather than one fixed subject, this collection acts as a visual index of range: the frames that best show composition, timing, color, and the instinct to notice a scene before it disappears.",
     thumbnail: "https://media.qasim.live/photos/thumb10.jpg",
     videos: null,
@@ -262,8 +262,6 @@ export const projectsData: Project[] = [
       "https://media.qasim.live/photos/photos/DSC09677.jpg",
       "https://media.qasim.live/photos/photos/DSC09692.jpg",
       "https://media.qasim.live/photos/photos/DSC09721.jpg",
-      "https://media.qasim.live/photos/photos/DSC09727.jpg",
-      "https://media.qasim.live/photos/photos/DSC09733.jpg",
       "https://media.qasim.live/photos/photos/DSC09751.jpg",
       "https://media.qasim.live/photos/photos/DSC09757.jpg",
       "https://media.qasim.live/photos/photos/DSC09803.jpg",
@@ -278,7 +276,6 @@ export const projectsData: Project[] = [
       "https://media.qasim.live/photos/photos/DSC09934.jpg",
       "https://media.qasim.live/photos/photos/DSC09938.jpg",
       "https://media.qasim.live/photos/photos/DSC09945.jpg",
-      "https://media.qasim.live/photos/photos/DSC09948.jpg",
       "https://media.qasim.live/photos/photos/DSC09985.jpg",
       "https://media.qasim.live/photos/photos/Ismail+Mounts%20v%20(I).jpg"
     ]

@@ -1387,6 +1387,7 @@ section { padding: 120px 0; }
 #contact {
   background: var(--black);
   padding: 120px 56px;
+  scroll-margin-top: 100px !important;
 }
 .contact-inner {
   max-width: 1100px;
@@ -1456,7 +1457,35 @@ section { padding: 120px 0; }
   color: var(--gold);
   line-height: 1.5;
 }
-.contact-form { }
+.contact-form {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.015);
+  padding: 48px;
+  transition: border-color 0.4s var(--ease-film), box-shadow 0.4s var(--ease-film);
+}
+.contact-form:focus-within {
+  border-color: rgba(201, 168, 76, 0.25);
+  box-shadow: 0 12px 40px -10px rgba(197, 160, 89, 0.05);
+}
+.contact-tabs-container {
+  margin-bottom: 96px !important;
+}
+@media (max-width: 768px) {
+  .contact-tabs-container {
+    margin-bottom: 64px !important;
+  }
+  .contact-form {
+    padding: 32px;
+  }
+}
+@media (max-width: 480px) {
+  .contact-tabs-container {
+    margin-bottom: 48px !important;
+  }
+  .contact-form {
+    padding: 24px;
+  }
+}
 .form-group {
   margin-bottom: 24px;
 }
