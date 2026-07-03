@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { useEffect } from "react";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 export default function App() {
   useEffect(() => {
@@ -69,6 +70,9 @@ export default function App() {
 
       {/* Floating fast-action contact links */}
       <WhatsAppButton />
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
