@@ -1,0 +1,25 @@
+{
+  "name": "Qasim Bokhari",
+  "short_name": "Qasim",
+  "theme_color": "#080808",
+  "background_color": "#080808",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "https://media.qasim.live/photos/logo%2016x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "https://media.qasim.live/photos/logo%2032x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "https://media.qasim.live/photos/logo%20180%20x%20180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
