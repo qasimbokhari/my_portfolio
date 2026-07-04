@@ -382,7 +382,7 @@ export default function Contact() {
           <div className="w-full max-w-[850px] mx-auto animate-[fadeIn_0.5s_ease-out]">
             <div className="w-full h-[520px] md:h-[650px] bg-[#0a0a0a] rounded border border-white/[0.03] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
               <iframe
-                src="https://cal.com/qasim-bokhari?layout=month_view&theme=dark"
+                src="https://cal.com/qasim-bokhari/embed?layout=month_view&theme=dark"
                 style={{ width: "100%", height: "100%", border: "none" }}
                 title="Book a consultation"
               />
