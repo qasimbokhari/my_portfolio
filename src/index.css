@@ -2044,3 +2044,99 @@ section.section-entering {
 section.section-visible {
   opacity: 1;
 }
+
+/* ─── HOW IT WORKS ─── */
+#how-it-works {
+  background: var(--deep);
+  padding: 120px 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+.how-it-works-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.how-it-works-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.how-it-works-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  color: var(--white);
+}
+.how-it-works-header h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.step-card {
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.015);
+  padding: 48px 32px;
+  position: relative;
+  transition: border-color 0.4s var(--ease-film), background 0.4s var(--ease-film), transform 0.4s var(--ease-film);
+}
+.step-card:hover {
+  border-color: rgba(201, 168, 76, 0.25);
+  background: rgba(201, 168, 76, 0.01);
+  transform: translateY(-4px);
+}
+.step-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(201, 168, 76, 0.2);
+  line-height: 1;
+  margin-bottom: 16px;
+  font-style: italic;
+  transition: color 0.4s;
+}
+.step-card:hover .step-num {
+  color: rgba(201, 168, 76, 0.6);
+}
+.step-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.step-headline {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.step-copy {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--silver);
+  font-weight: 300;
+}
+
+@media (max-width: 968px) {
+  .how-it-works-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .step-card {
+    padding: 32px 24px;
+  }
+}
+@media (max-width: 480px) {
+  #how-it-works {
+    padding: 80px 20px;
+  }
+  .how-it-works-header {
+    margin-bottom: 48px;
+  }
+}
+

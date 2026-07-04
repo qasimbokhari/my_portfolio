@@ -11,7 +11,7 @@ export default function Header() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const sections = ["hero", "portfolio", "about", "testimonials", "contact"];
+          const sections = ["hero", "portfolio", "how-it-works", "about", "testimonials", "contact"];
           let currentSection = "hero";
           
           for (const section of sections) {
@@ -52,6 +52,7 @@ export default function Header() {
 
   const navItems = [
     { id: "portfolio", label: "Portfolio" },
+    { id: "how-it-works", label: "How It Works" },
     { id: "about", label: "About" },
     { id: "testimonials", label: "Testimonials" },
     { id: "contact", label: "Contact" },

@@ -2,6 +2,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Portfolio from "./components/Portfolio";
+import HowItWorks from "./components/HowItWorks";
 import About from "./components/About";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
@@ -53,6 +54,9 @@ export default function App() {
 
         {/* Portfolio reel section containing high-resolution video and photo preview galleries */}
         <Portfolio />
+
+        {/* Dynamic step-by-step commercial video workflow */}
+        <HowItWorks />
 
         {/* Dynamic biographies and statistics summary */}
         <About />
