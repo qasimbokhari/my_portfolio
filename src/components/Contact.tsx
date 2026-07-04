@@ -379,17 +379,18 @@ export default function Contact() {
 
         {/* Tab 2: Cal.com Embed */}
         {activeTab === "booking" && (
-          <div className="w-full max-w-[850px] mx-auto animate-[fadeIn_0.5s_ease-out]">
-            <div className="w-full h-[520px] md:h-[650px] bg-[#0a0a0a] rounded border border-white/[0.03] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
-              <iframe
-                src="https://cal.com/qasim-bokhari/embed?layout=month_view&theme=dark"
-                style={{ width: "100%", height: "100%", border: "none" }}
-                title="Book a consultation"
-              />
-            </div>
-            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-silver/40 mt-6 italic">
-              * Schedule a direct meeting to align with my production calendar.
+          <div className="w-full max-w-[850px] mx-auto animate-[fadeIn_0.5s_ease-out] flex flex-col items-center justify-center py-24 border border-white/[0.03] bg-[#0a0a0a] rounded">
+            <p className="text-silver text-sm font-light mb-8 text-center max-w-[420px] px-6">
+              Click below to view my live availability and book a consultation directly.
             </p>
+            <a
+              href="https://cal.com/qasim-bokhari"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-gold/30 text-gold hover:border-gold px-8 py-3 text-xs uppercase tracking-widest cursor-pointer transition-all duration-300 bg-transparent hover:bg-gold hover:text-black font-medium no-underline"
+            >
+              Open Booking Calendar
+            </a>
           </div>
         )}
       </div>
