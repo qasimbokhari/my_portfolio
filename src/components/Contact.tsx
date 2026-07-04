@@ -402,6 +402,7 @@ export default function Contact() {
               <Cal
                 calLink="qasim-bokhari"
                 embedJsUrl="/cal-embed.js"
+                calOrigin="https://cal.com"
                 style={{ width: "100%", height: "100%" }}
                 config={{ layout: "month_view" }}
               />
