@@ -127,7 +127,8 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
               <div key={vIdx} className="modal-video-item">
                 <video
                   src={vid}
-                  controls={!isForceMuted}
+                  controls={true}
+                  controlsList={isForceMuted ? "novolume" : undefined}
                   playsInline
                   preload="metadata"
                   muted={isForceMuted}
