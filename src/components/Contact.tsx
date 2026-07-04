@@ -1,9 +1,17 @@
 import { useState, FormEvent, useEffect, useRef } from "react";
 import { Mail, Phone, Instagram, MapPin, CheckCircle, AlertTriangle } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import Cal, { getCalApi } from "@calcom/embed-react";
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<"form" | "booking">("form");
+  
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({"namespace":"30-minute-consultation"});
+      cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    })();
+  }, []);
   
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -379,18 +387,13 @@ export default function Contact() {
 
         {/* Tab 2: Cal.com Embed */}
         {activeTab === "booking" && (
-          <div className="w-full max-w-[850px] mx-auto animate-[fadeIn_0.5s_ease-out] flex flex-col items-center justify-center py-24 border border-white/[0.03] bg-[#0a0a0a] rounded">
-            <p className="text-silver text-sm font-light mb-8 text-center max-w-[420px] px-6">
-              Click below to view my live availability and book a consultation directly.
-            </p>
-            <a
-              href="https://cal.com/qasim-bokhari"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gold/30 text-gold hover:border-gold px-8 py-3 text-xs uppercase tracking-widest cursor-pointer transition-all duration-300 bg-transparent hover:bg-gold hover:text-black font-medium no-underline"
-            >
-              Open Booking Calendar
-            </a>
+          <div className="w-full max-w-[850px] mx-auto animate-[fadeIn_0.5s_ease-out] border border-white/[0.03] bg-[#0a0a0a] rounded overflow-hidden">
+            <Cal 
+              namespace="30-minute-consultation"
+              calLink="qasim-bokhari/30-minute-consultation"
+              style={{ width: "100%", height: "700px", overflow: "scroll" }}
+              config={{ "layout": "month_view", "useSlotsViewOnSmallScreen": "true" }}
+            />
           </div>
         )}
       </div>
