@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { trackEvent } from "../utils/analytics";
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState<boolean>(() => {
@@ -74,6 +75,7 @@ export default function Hero() {
           target="_blank"
           rel="noopener noreferrer"
           className="hero-cta"
+          onClick={() => trackEvent("Contact", "WhatsApp Click", "Hero CTA")}
         >
           Book a Shoot / Get a Quote
         </a>

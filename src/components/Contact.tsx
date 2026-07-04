@@ -1,6 +1,7 @@
 import { useState, FormEvent, useEffect, useRef } from "react";
 import { Mail, Phone, Instagram, MapPin, CheckCircle, AlertTriangle } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { trackEvent } from "../utils/analytics";
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<"form" | "booking">("form");
@@ -156,6 +157,7 @@ export default function Contact() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group block no-underline"
+                  onClick={() => trackEvent("Contact", "WhatsApp Click", "Contact Page CTA")}
                 >
                   <span className="block contact-item-label">Phone & WhatsApp</span>
                   <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white group-hover:text-gold transition-colors duration-300 font-light tracking-wide">
@@ -390,6 +392,7 @@ export default function Contact() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group block no-underline"
+                  onClick={() => trackEvent("Contact", "WhatsApp Click", "Contact Page CTA")}
                 >
                   <span className="block contact-item-label">Phone & WhatsApp</span>
                   <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white group-hover:text-gold transition-colors duration-300 font-light tracking-wide">

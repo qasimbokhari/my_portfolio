@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { Project } from "../types";
 import { projectsData } from "../data/portfolioData";
+import { trackEvent } from "../utils/analytics";
 
 const ProjectModal = lazy(() => import("./ProjectModal"));
 
@@ -41,7 +42,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
   return (
     <div
       ref={containerRef}
-      onClick={() => setSelectedProject(project)}
+      onClick={() => {
+        trackEvent("Portfolio", "Project Click", project.title);
+        setSelectedProject(project);
+      }}
       onKeyDown={handleKeyDown}
       className="project-item focus:outline-none focus-visible:ring-1 focus-visible:ring-gold"
       tabIndex={0}

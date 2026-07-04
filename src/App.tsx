@@ -10,9 +10,16 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 export default function App() {
   useEffect(() => {
+    // Initialize GA4 only in production
+    if (import.meta.env.PROD) {
+      ReactGA.initialize("G-WXVYRP16CK");
+      ReactGA.send("pageview");
+    }
+
     const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const elements = document.querySelectorAll(".reveal, .project-item");
 

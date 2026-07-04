@@ -1,4 +1,5 @@
 import React from "react";
+import { trackEvent } from "../utils/analytics";
 
 export default function Services() {
   const categories = [
@@ -171,6 +172,7 @@ export default function Services() {
             rel="noopener noreferrer"
             className="form-submit inline-block text-center no-underline max-w-[320px] mx-auto cursor-pointer"
             style={{ display: "inline-block", marginTop: "40px" }}
+            onClick={() => trackEvent("Contact", "WhatsApp Click", "Services Page CTA")}
           >
             <span>Get a Custom Quote (WhatsApp)</span>
           </a>

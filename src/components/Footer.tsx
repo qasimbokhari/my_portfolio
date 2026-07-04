@@ -1,3 +1,5 @@
+import { trackEvent } from "../utils/analytics";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -21,6 +23,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="font-sans text-[11px] tracking-[0.15em] text-silver hover:text-gold no-underline transition-colors duration-300 cursor-pointer uppercase font-medium"
+          onClick={() => trackEvent("Contact", "WhatsApp Click", "Footer CTA")}
         >
           WhatsApp
         </a>
