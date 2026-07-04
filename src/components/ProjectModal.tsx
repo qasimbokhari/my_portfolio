@@ -119,7 +119,7 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
       </div>
 
       {selectedProject.videos && selectedProject.videos.length > 0 && (
-        <div className="modal-video-list">
+        <div className={`modal-video-list ${selectedProject.title === "After Rain" ? "modal-video-list--afterrain" : ""}`}>
           {selectedProject.videos.map((vid, vIdx) => {
             const orientation = videoOrientations[vid] || "horizontal";
             const isForceMuted = selectedProject.forceMuted;
@@ -131,6 +131,15 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
                   playsInline
                   preload="metadata"
                   muted={isForceMuted}
+                  autoPlay={isForceMuted}
+                  loop={isForceMuted}
+                  ref={isForceMuted ? (el) => {
+                    if (el) {
+                      el.muted = true;
+                      el.volume = 0;
+                      el.play().catch(() => {});
+                    }
+                  } : undefined}
                   {...{ referrerPolicy: "no-referrer" }}
                   className={orientation === "vertical" ? "video-vertical" : "video-horizontal"}
                   onLoadedMetadata={(e) => handleLoadedMetadata(vid, e)}
@@ -152,14 +161,14 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
                     }
                   } : undefined}
                 />
-                {isForceMuted && (
-                  <p className="modal-video-caption">
-                    Video muted due to licensed background music
-                  </p>
-                )}
               </div>
             );
           })}
+          {selectedProject.forceMuted && (
+            <p className="modal-video-caption">
+              Videos muted due to licensed background music
+            </p>
+          )}
         </div>
       )}
 

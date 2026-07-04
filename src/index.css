@@ -575,6 +575,10 @@ section { padding: 120px 0; }
   grid-column: span 1;
   aspect-ratio: 9 / 16;
 }
+.modal-video-list--afterrain video.video-horizontal {
+  grid-column: span 1;
+  aspect-ratio: 16 / 9;
+}
 .modal-close {
   position: fixed;
   top: 40px; right: 56px;
