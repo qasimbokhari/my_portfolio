@@ -1,0 +1,8 @@
+name = "qasim-reviews-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "qasim-reviews"
+database_id = "44f9b361-206a-4530-b174-5774a8cdb021"

@@ -2,6 +2,10 @@ node_modules/
 build/
 dist/
 coverage/
+security/
+workers/review-api/node_modules/
+workers/review-api/.wrangler/
+secret.txt
 .DS_Store
 *.log
 .env*

@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from "react";
+import {shouldSuppressError} from "../utils/errorFiltering";
 
 interface Props {
   children: ReactNode;
@@ -14,14 +15,7 @@ export default class ErrorBoundary extends Component<Props, State> {
   };
 
   public static getDerivedStateFromError(error: Error): State {
-    const msg = String(error?.message || "").toLowerCase();
-    if (
-      msg.includes("script error") ||
-      msg.includes("blocked a frame with origin") ||
-      msg.includes("cross-origin") ||
-      msg.includes("cal.com") ||
-      msg.includes("calco")
-    ) {
+    if (shouldSuppressError(error?.message)) {
       return { hasError: false };
     }
     // Update state so the next render will show the fallback UI.

@@ -163,7 +163,8 @@ export const projectsData: Project[] = [
       "https://media.qasim.live/photos/afterrain/DSC01812.jpg",
       "https://media.qasim.live/photos/afterrain/DSC01817.jpg",
       "https://media.qasim.live/photos/afterrain/DSC01828.jpg"
-    ]
+    ],
+    forceMuted: true // Force-muted due to licensed background music that cannot be publicly distributed with audio
   },
   {
     id: 7,
@@ -285,26 +286,30 @@ export const projectsData: Project[] = [
 export const initialTestimonials: Testimonial[] = [
   {
     id: 1,
-    text: "We were looking for student-focused social media content for NEXUS, NUST’s merchandise store, as part of our digital campaign. Qasim created an exceptional video for NEXUS that perfectly balanced product promotion with student storytelling.\n\nFrom the creative direction to the overall dynamic visuals, every aspect of the video resonated with the target audience and received widespread appreciation and engagement.\n\nIt captured the true NUST experience perfectly, exactly as we had envisioned.",
+    text: "We were looking for student-focused social media content for NEXUS, NUST's merchandise store, as part of our digital campaign. Qasim created an exceptional video for NEXUS that perfectly balanced product promotion with student storytelling.\n\nFrom the creative direction to the overall dynamic visuals, every aspect of the video resonated with the target audience and received widespread appreciation and engagement.\n\nIt captured the true NUST experience perfectly, exactly as we had envisioned.",
     author: "Fatima Masood",
-    role: "Assistant Manager, Digital Communications, MARCOM Office, NUST"
+    role: "Assistant Manager, Digital Communications, MARCOM Office, NUST",
+    rating: 5
   },
   {
     id: 2,
     text: "We hired Qasim for our main start-up campaign reel. Dynamic pacing, gorgeous color grading, and extremely professional with delivery. Absolute recommended.",
     author: "Mansoor Ahmed",
-    role: "Founder, Aeromavericks"
+    role: "Founder, Aeromavericks",
+    rating: 5
   },
   {
     id: 3,
     text: "I had Qasim work on a logo reveal video and gave him full creative lead on it. He came up with the concept, planned everything, shot it, and edited the final video beautifully. It turned out super artistic, original, and genuinely cinematic. Every little detail, from the colors and sound design to the pacing, was on point. He really knows how to bring an idea to life, and it definitely shows in his work.",
     author: "Baria Mubashar",
-    role: "VP Media, ON NUST 25"
+    role: "VP Media, ON NUST 25",
+    rating: 5
   },
   {
     id: 4,
     text: "Worked with Qasim on a freelance project, and the results were absolutely stunning. From the composition and cinematography to the final polished color grading, his technical skill and visual storytelling are top-tier. He made the entire session feel effortless and delivered elite cinematic frames.",
     author: "Ismail Malik",
-    role: "Freelance Client"
+    role: "Freelance Client",
+    rating: 5
   }
 ];

@@ -122,36 +122,42 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
         <div className="modal-video-list">
           {selectedProject.videos.map((vid, vIdx) => {
             const orientation = videoOrientations[vid] || "horizontal";
-            const isAfterRain = selectedProject.title === "After Rain";
+            const isForceMuted = selectedProject.forceMuted;
             return (
-              <video
-                key={vIdx}
-                src={vid}
-                controls
-                playsInline
-                preload="metadata"
-                muted={isAfterRain}
-                {...{ referrerPolicy: "no-referrer" }}
-                className={orientation === "vertical" ? "video-vertical" : "video-horizontal"}
-                onLoadedMetadata={(e) => handleLoadedMetadata(vid, e)}
-                onVolumeChange={isAfterRain ? (e) => {
-                  const video = e.currentTarget;
-                  video.muted = true;
-                  video.volume = 0;
-                } : undefined}
-                onPlay={isAfterRain ? (e) => {
-                  const video = e.currentTarget;
-                  video.muted = true;
-                  video.volume = 0;
-                } : undefined}
-                onTimeUpdate={isAfterRain ? (e) => {
-                  const video = e.currentTarget;
-                  if (video.volume > 0 || !video.muted) {
+              <div key={vIdx} className="modal-video-item">
+                <video
+                  src={vid}
+                  controls={!isForceMuted}
+                  playsInline
+                  preload="metadata"
+                  muted={isForceMuted}
+                  {...{ referrerPolicy: "no-referrer" }}
+                  className={orientation === "vertical" ? "video-vertical" : "video-horizontal"}
+                  onLoadedMetadata={(e) => handleLoadedMetadata(vid, e)}
+                  onVolumeChange={isForceMuted ? (e) => {
+                    const video = e.currentTarget;
                     video.muted = true;
                     video.volume = 0;
-                  }
-                } : undefined}
-              />
+                  } : undefined}
+                  onPlay={isForceMuted ? (e) => {
+                    const video = e.currentTarget;
+                    video.muted = true;
+                    video.volume = 0;
+                  } : undefined}
+                  onTimeUpdate={isForceMuted ? (e) => {
+                    const video = e.currentTarget;
+                    if (video.volume > 0 || !video.muted) {
+                      video.muted = true;
+                      video.volume = 0;
+                    }
+                  } : undefined}
+                />
+                {isForceMuted && (
+                  <p className="modal-video-caption">
+                    Video muted due to licensed background music
+                  </p>
+                )}
+              </div>
             );
           })}
         </div>

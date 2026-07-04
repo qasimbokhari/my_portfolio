@@ -7,6 +7,7 @@ export interface Project {
   thumbnail: string;
   videos: string[] | null;
   gallery?: string[];
+  forceMuted?: boolean; // If true, video audio is permanently muted (e.g., due to licensed background music)
 }
 
 export interface Testimonial {
@@ -14,6 +15,7 @@ export interface Testimonial {
   text: string;
   author: string;
   role: string;
+  rating?: number;
 }
 
 export interface ContactFormData {

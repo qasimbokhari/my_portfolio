@@ -1,32 +1,12 @@
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Testimonial } from "../types";
 import { initialTestimonials } from "../data/portfolioData";
 import { X, Star } from "lucide-react";
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>(() => {
-    const saved = localStorage.getItem("portfolio_testimonials");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          // Merge default initialTestimonials with custom ones from localStorage
-          const merged = [...initialTestimonials];
-          parsed.forEach((item: Testimonial) => {
-            // Avoid duplicates by matching id, or author + text combination
-            if (!merged.some(m => m.id === item.id || (m.author === item.author && m.text === item.text))) {
-              merged.push(item);
-            }
-          });
-          return merged;
-        }
-      } catch (e) {
-        console.error("Failed to parse saved testimonials", e);
-      }
-    }
-    return initialTestimonials;
-  });
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(initialTestimonials);
+  const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Form states
@@ -36,43 +16,94 @@ export default function Testimonials() {
   const [rating, setRating] = useState(5);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmitReview = (e: FormEvent) => {
+  // Fetch approved reviews from API on mount
+  useEffect(() => {
+    const fetchReviews = async () => {
+      setIsLoading(true);
+      try {
+        const apiUrl = import.meta.env.VITE_REVIEWS_API_URL;
+        if (!apiUrl) {
+          console.warn("VITE_REVIEWS_API_URL not set, using initial testimonials only");
+          return;
+        }
+        const response = await fetch(`${apiUrl}/reviews`);
+        if (response.ok) {
+          const apiReviews = await response.json();
+          // Map API response to Testimonial format (API uses 'name', frontend uses 'author')
+          const mappedReviews = apiReviews.map((r: any) => ({
+            id: r.id,
+            text: r.text,
+            author: r.name,
+            role: r.role,
+            rating: r.rating
+          }));
+          // Merge: initialTestimonials first, then API reviews
+          setTestimonials([...initialTestimonials, ...mappedReviews]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch reviews from API:", error);
+        // Silently fall back to initialTestimonials
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchReviews();
+  }, []);
+
+  const handleSubmitReview = async (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !text.trim()) {
       setError("Please fill in both your name and review text.");
       return;
     }
 
-    const newReview: Testimonial = {
-      id: Date.now(),
-      text: text.trim(),
-      author: name.trim(),
-      role: role.trim() || "Independent Creator"
-    };
+    const apiUrl = import.meta.env.VITE_REVIEWS_API_URL;
+    if (!apiUrl) {
+      setError("Review service not configured.");
+      return;
+    }
 
-    setTestimonials((prev) => {
-      const updated = [...prev, newReview];
-      // Store only user-submitted reviews in localStorage (not defaults)
-      const userSubmitted = updated.filter(
-        item => !initialTestimonials.some(initial => initial.id === item.id || (initial.author === item.author && initial.text === item.text))
-      );
-      localStorage.setItem("portfolio_testimonials", JSON.stringify(userSubmitted));
-      return updated;
-    });
-    setSuccess(true);
+    setSubmitting(true);
     setError("");
-    
-    // Clear form
-    setName("");
-    setRole("");
-    setText("");
-    setRating(5);
 
-    setTimeout(() => {
-      setIsModalOpen(false);
-      setSuccess(false);
-    }, 2000);
+    try {
+      const response = await fetch(`${apiUrl}/reviews`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          role: role.trim() || "Independent Creator",
+          text: text.trim(),
+          rating
+        })
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        // Clear form
+        setName("");
+        setRole("");
+        setText("");
+        setRating(5);
+
+        setTimeout(() => {
+          setIsModalOpen(false);
+          setSuccess(false);
+        }, 3000);
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || "Failed to submit review. Please try again.");
+      }
+    } catch (error) {
+      console.error("Failed to submit review:", error);
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -135,8 +166,7 @@ export default function Testimonials() {
               {success ? (
                 <div className="text-center py-10 border border-gold-dim bg-gold/5 animate-pulse">
                   <p className="font-display text-lg italic text-gold">
-                    Review submitted successfully.<br />
-                    Adding it directly to the stage...
+                    Thanks for your review — it'll appear on the site once approved.
                   </p>
                 </div>
               ) : (
@@ -211,9 +241,10 @@ export default function Testimonials() {
 
                   <button
                     type="submit"
+                    disabled={submitting}
                     className="form-submit cursor-pointer"
                   >
-                    Submit Review
+                    {submitting ? "Submitting..." : "Submit Review"}
                   </button>
                 </form>
               )}
