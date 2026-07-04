@@ -47,7 +47,7 @@ export default function Contact() {
   useEffect(() => {
     (async function () {
       try {
-        const cal = await getCalApi({});
+        const cal = await getCalApi({ embedJsUrl: "/cal-embed.js" });
         cal("ui", {
           theme: "dark",
           styles: { branding: { brandColor: "#000000" } },
@@ -401,6 +401,7 @@ export default function Contact() {
             <div className="w-full h-[520px] md:h-[650px] bg-[#0a0a0a] rounded border border-white/[0.03] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
               <Cal
                 calLink="qasim-bokhari"
+                embedJsUrl="/cal-embed.js"
                 style={{ width: "100%", height: "100%" }}
                 config={{ layout: "month_view" }}
               />
