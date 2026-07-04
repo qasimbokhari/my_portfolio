@@ -1,7 +1,6 @@
 import { useState, FormEvent, useEffect, useRef } from "react";
 import { Mail, Phone, Instagram, MapPin, CheckCircle, AlertTriangle } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import Cal, { getCalApi } from "@calcom/embed-react";
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<"form" | "booking">("form");
@@ -41,23 +40,6 @@ export default function Contact() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
-
-  // Initialize Cal.com UI
-  useEffect(() => {
-    (async function () {
-      try {
-        const cal = await getCalApi({ embedJsUrl: "/cal-embed.js" });
-        cal("ui", {
-          theme: "dark",
-          styles: { branding: { brandColor: "#000000" } },
-          hideEventTypeDetails: false,
-          layout: "month_view",
-        });
-      } catch (e) {
-        console.error("Cal.com init failed:", e);
-      }
-    })();
   }, []);
 
   const handleSubmit = (e: FormEvent) => {
@@ -399,12 +381,10 @@ export default function Contact() {
         {activeTab === "booking" && (
           <div className="w-full max-w-[850px] mx-auto animate-[fadeIn_0.5s_ease-out]">
             <div className="w-full h-[520px] md:h-[650px] bg-[#0a0a0a] rounded border border-white/[0.03] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
-              <Cal
-                calLink="qasim-bokhari"
-                embedJsUrl="/cal-embed.js"
-                calOrigin="https://cal.com"
-                style={{ width: "100%", height: "100%" }}
-                config={{ layout: "month_view" }}
+              <iframe
+                src="https://cal.com/qasim-bokhari?layout=month_view&theme=dark"
+                style={{ width: "100%", height: "100%", border: "none" }}
+                title="Book a consultation"
               />
             </div>
             <p className="text-center text-[10px] uppercase tracking-[0.2em] text-silver/40 mt-6 italic">
