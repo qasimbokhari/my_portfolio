@@ -57,20 +57,24 @@ export default function Hero() {
 
       <div className="hero-content">
         <p className="hero-eyebrow">
-          Islamabad, Pakistan · Est. 2024
+          Qasim Bokhari · Islamabad
         </p>
         
         <h1 className="hero-title">
-          Qasim<br />
-          <em>Bokhari</em>
+          I make the video content your brand's Instagram is <em>missing</em>.
         </h1>
         
         <p className="hero-sub">
-          Cinematographer &nbsp;·&nbsp; Photographer &nbsp;·&nbsp; Editor
+          Product films, brand reels, and commercial video production — for restaurants, retail, and growing brands who need content that converts.
         </p>
         
-        <a href="#portfolio" className="hero-cta">
-          View Portfolio
+        <a
+          href="https://wa.me/923395261532?text=Hi%20Qasim%2C%20I%E2%80%99d%20like%20to%20get%20a%20quote%20for%20a%20video%20project."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-cta"
+        >
+          Get a Quote
         </a>
       </div>
     </section>
