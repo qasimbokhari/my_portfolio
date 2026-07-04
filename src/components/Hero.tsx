@@ -57,28 +57,17 @@ export default function Hero() {
 
       <div className="hero-content">
         <p className="hero-eyebrow">
-          Qasim Bokhari · Islamabad
+          Based in Islamabad | Available Nationwide
         </p>
         
         <h1 className="hero-title">
-          Films that <em>sell</em>.
+          Qasim<br />
+          <em>Bokhari</em>
         </h1>
         
         <p className="hero-sub">
-          I'm Qasim Bokhari — commercial video, photography, branding, and motion graphics for businesses across Pakistan. One creative lead, one team, everything handled.
+          Commercial &amp; Brand Films &nbsp;·&nbsp; Photography &nbsp;·&nbsp; Motion Graphics &nbsp;·&nbsp; Branding &nbsp;·&nbsp; Event &amp; Wedding Cinematography
         </p>
-
-        <div className="hero-services">
-          <span>Commercial & Brand Films</span>
-          <span className="separator">·</span>
-          <span>Photography</span>
-          <span className="separator">·</span>
-          <span>Motion Graphics</span>
-          <span className="separator">·</span>
-          <span>Branding</span>
-          <span className="separator">·</span>
-          <span>Event & Wedding Cinematography</span>
-        </div>
         
         <a
           href="https://wa.me/923395261532?text=Hi%20Qasim%2C%20I%E2%80%99d%20like%20to%20book%20a%20shoot%20or%20get%20a%20quote%20for%20a%20project."
