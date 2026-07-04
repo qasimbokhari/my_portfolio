@@ -2167,3 +2167,218 @@ section.section-visible {
   }
 }
 
+/* ─── SERVICES ─── */
+#services {
+  background: var(--black);
+  padding: 120px 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.services-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.services-header h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.services-intro {
+  color: var(--silver);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+.service-category-card {
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.01);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.4s var(--ease-film), background 0.4s var(--ease-film);
+}
+.service-category-card:hover {
+  border-color: rgba(201, 168, 76, 0.2);
+  background: rgba(201, 168, 76, 0.005);
+}
+.service-category-card.secondary-offering {
+  border-style: dashed;
+}
+.category-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.category-num {
+  font-size: 0.9rem;
+  color: var(--gold);
+  opacity: 0.7;
+  font-family: var(--font-body);
+  letter-spacing: 0.1em;
+}
+.secondary-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--silver);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 4px 8px;
+  margin-left: auto;
+  font-family: var(--font-body);
+}
+.packages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.package-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+.package-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.03);
+}
+.package-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.package-name {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.package-price {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--gold);
+  font-style: italic;
+}
+.package-desc {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--silver);
+  font-weight: 300;
+}
+.micro-project-card {
+  grid-column: span 2;
+  border-color: rgba(201, 168, 76, 0.15);
+  background: rgba(201, 168, 76, 0.01);
+}
+.micro-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 16px;
+}
+.detail-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 8px;
+}
+.micro-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.example-tag {
+  font-size: 0.75rem;
+  color: var(--white);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 6px 12px;
+  font-weight: 300;
+}
+.micro-pricing-info {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px dashed rgba(255,255,255,0.05);
+}
+.services-footer {
+  text-align: center;
+  max-width: 800px;
+  margin: 80px auto 0;
+  padding-top: 60px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.services-closing {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--white);
+  font-style: italic;
+  font-weight: 300;
+}
+
+@media (max-width: 968px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .micro-project-card {
+    grid-column: span 1;
+  }
+  .micro-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .service-category-card {
+    padding: 32px;
+  }
+}
+@media (max-width: 480px) {
+  #services {
+    padding: 80px 20px;
+  }
+  .services-header {
+    margin-bottom: 48px;
+  }
+  .service-category-card {
+    padding: 24px;
+  }
+  .category-title {
+    font-size: 1.3rem;
+  }
+  .package-price {
+    font-size: 1rem;
+  }
+}
+
+

@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Portfolio from "./components/Portfolio";
 import HowItWorks from "./components/HowItWorks";
+import Services from "./components/Services";
 import About from "./components/About";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
@@ -57,6 +58,9 @@ export default function App() {
 
         {/* Dynamic step-by-step commercial video workflow */}
         <HowItWorks />
+
+        {/* Structured packages, pricing tiers, and customized quotes panel */}
+        <Services />
 
         {/* Dynamic biographies and statistics summary */}
         <About />
