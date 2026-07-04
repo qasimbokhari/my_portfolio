@@ -379,18 +379,84 @@ export default function Contact() {
 
         {/* Tab 2: Cal.com Embed */}
         {activeTab === "booking" && (
-          <div className="w-full max-w-[850px] mx-auto animate-[fadeIn_0.5s_ease-out] flex flex-col items-center justify-center py-24 border border-white/[0.03] bg-[#0a0a0a] rounded">
-            <p className="text-silver text-sm font-light mb-8 text-center max-w-[420px] px-6">
-              Click below to view my live availability and book a consultation directly.
-            </p>
-            <a
-              href="https://cal.com/qasim-bokhari"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gold/30 text-gold hover:border-gold px-8 py-3 text-xs uppercase tracking-widest cursor-pointer transition-all duration-300 bg-transparent hover:bg-gold hover:text-black font-medium no-underline"
-            >
-              Open Booking Calendar
-            </a>
+          <div className="contact-grid">
+            {/* Left Column: Reach Me Directly */}
+            <div className="contact-info">
+              <h3>Reach Me Directly</h3>
+              <div className="contact-detail">
+                {/* Phone */}
+                <a 
+                  href="https://wa.me/923395261532" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group block no-underline"
+                >
+                  <span className="block contact-item-label">Phone & WhatsApp</span>
+                  <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white group-hover:text-gold transition-colors duration-300 font-light tracking-wide">
+                    +92 339 526 1532
+                  </span>
+                </a>
+                
+                {/* Email */}
+                <a 
+                  href="mailto:contact@qasim.live" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group block no-underline"
+                >
+                  <span className="block contact-item-label">Email Address</span>
+                  <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white group-hover:text-gold transition-colors duration-300 font-light tracking-wide break-all">
+                    contact@qasim.live
+                  </span>
+                </a>
+                
+                {/* Instagram */}
+                <a 
+                  href="https://instagram.com/qasim.arw" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group block no-underline"
+                >
+                  <span className="block contact-item-label">Instagram</span>
+                  <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white group-hover:text-gold transition-colors duration-300 font-light tracking-wide">
+                    @qasim.arw
+                  </span>
+                </a>
+                
+                {/* Location */}
+                <div className="group block">
+                  <span className="block contact-item-label">Location</span>
+                  <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white font-light tracking-wide">
+                    Islamabad, Pakistan
+                  </span>
+                </div>
+              </div>
+
+              {/* Rates & Guarantee Badge */}
+              <div className="contact-badge">
+                <p>
+                  "Cinematic quality at rates that make sense for the Pakistani market."
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column: Direct Booking CTA */}
+            <div className="contact-form flex flex-col justify-center items-center text-center min-h-[380px] md:min-h-[420px]">
+              <h3 className="font-display text-xl md:text-2xl text-gold font-light mb-4 italic">
+                Schedule a Consultation
+              </h3>
+              <p className="font-sans text-xs md:text-sm text-silver font-light leading-relaxed max-w-[360px] mb-8">
+                Skip the back-and-forth email process. Select a time on my calendar to book a free 30-minute consultation directly.
+              </p>
+              <a
+                href="https://cal.com/qasim-bokhari"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="form-submit block text-center no-underline max-w-[280px] mx-auto cursor-pointer"
+              >
+                <span>Open Booking Calendar</span>
+              </a>
+            </div>
           </div>
         )}
       </div>
