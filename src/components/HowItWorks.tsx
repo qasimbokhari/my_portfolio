@@ -6,19 +6,25 @@ export default function HowItWorks() {
       num: "01",
       label: "Consult",
       headline: "Tell me your vision",
-      copy: "We hop on a quick call or WhatsApp chat to talk through your brand, goals, and what kind of video will actually move the needle for you — whether it's a product film, a brand reel, or a full campaign."
+      copy: "We start with a call or WhatsApp chat so I understand your brand, goals, and what kind of content will actually move the needle — whether that's a brand film, a photoshoot, or a full campaign."
     },
     {
       num: "02",
-      label: "Shoot",
-      headline: "We bring it to life",
-      copy: "On shoot day, I handle everything — concept, direction, filming — so you don't have to think about the technical side. Just show up and let the brand speak."
+      label: "Create",
+      headline: "I bring it to life",
+      copy: "I personally lead the shoot and creative direction, bringing in my production team when a project needs extra hands — cameras, motion graphics, or additional crew. One accountable lead, full production capability."
     },
     {
       num: "03",
       label: "Deliver",
       headline: "Get content that performs",
-      copy: "You receive polished, ready-to-post video content, edited and optimized for wherever it's going — Instagram, YouTube, your website, or ad campaigns."
+      copy: "You receive polished, ready-to-use content — video, photos, graphics — edited and optimized for wherever it's going: Instagram, YouTube, ad campaigns, or your website."
+    },
+    {
+      num: "04",
+      label: "Grow together",
+      headline: "Ongoing content, one trusted lead",
+      copy: "Many clients keep working with me for ongoing shoots and campaigns — no re-explaining your brand each time, since I already know it."
     }
   ];
 

@@ -1,15 +1,15 @@
 export default function About() {
   const services = [
-    "Cinematography",
+    "Commercial Video",
     "Photography",
+    "Motion Graphics",
+    "Branding",
     "Premiere Pro",
     "After Effects",
     "Lightroom",
     "Photoshop & Illustrator",
-    "Weddings",
-    "Brand Campaigns",
-    "Music Videos",
-    "Documentary Films",
+    "Wedding Cinematography",
+    "Documentary Films"
   ];
 
   return (
@@ -57,24 +57,24 @@ export default function About() {
           <div className="about-header-block">
             <span className="section-label">About Me</span>
             <h2>
-              Behind<br />
-              the <em>Lens</em>
+              I lead every project.<br />
+              My team helps me <em>deliver it at scale</em>.
             </h2>
           </div>
 
           {/* 2. Biography Block */}
           <div className="about-bio-block">
             <p>
-              My name is Qasim Bokhari. I am a cinematographer, photographer, and editor from Islamabad, and over the past two years I have built a body of work that spans weddings, brand campaigns, music videos, and documentary-style projects.
+              I’m Qasim Bokhari, a nationwide media producer based in Islamabad. I specialize in commercial video, photography, branding, and motion graphics, taking projects from initial concept all the way through execution and final delivery.
             </p>
             <p>
-              I work hands-on across the full Adobe Creative Suite, from editing in Premiere Pro and motion work in After Effects to color grading in Lightroom and visual design in Photoshop and Illustrator. Behind every project is a professional team and the equipment to match, ready for productions of any scale.
+              My approach is completely hands-on. Whether I'm directing a shoot, color grading, or designing in the Adobe Creative Suite, the creative vision stays entirely with me. For large-scale projects, I leverage a trusted production team equipped to handle complex multi-cam setups and high-end motion design without ever compromising on quality control.
             </p>
             <p>
-              If you are looking for someone who brings the same level of care to every project regardless of size, I would love to work with you.
+              I bring the same level of care and precision to every brand I partner with, regardless of scale. Let’s create something impactful together.
             </p>
             <p>
-              Based in Islamabad. Available across Pakistan.
+              Based in Islamabad. Available nationwide.
             </p>
           </div>
 

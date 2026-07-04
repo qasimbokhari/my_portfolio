@@ -61,20 +61,32 @@ export default function Hero() {
         </p>
         
         <h1 className="hero-title">
-          I make the video content your brand's Instagram is <em>missing</em>.
+          Films that <em>sell</em>.
         </h1>
         
         <p className="hero-sub">
-          Product films, brand reels, and commercial video production — for restaurants, retail, and growing brands who need content that converts.
+          I'm Qasim Bokhari — commercial video, photography, branding, and motion graphics for businesses across Pakistan. One creative lead, one team, everything handled.
         </p>
+
+        <div className="hero-services">
+          <span>Commercial & Brand Films</span>
+          <span className="separator">·</span>
+          <span>Photography</span>
+          <span className="separator">·</span>
+          <span>Motion Graphics</span>
+          <span className="separator">·</span>
+          <span>Branding</span>
+          <span className="separator">·</span>
+          <span>Event & Wedding Cinematography</span>
+        </div>
         
         <a
-          href="https://wa.me/923395261532?text=Hi%20Qasim%2C%20I%E2%80%99d%20like%20to%20get%20a%20quote%20for%20a%20video%20project."
+          href="https://wa.me/923395261532?text=Hi%20Qasim%2C%20I%E2%80%99d%20like%20to%20book%20a%20shoot%20or%20get%20a%20quote%20for%20a%20project."
           target="_blank"
           rel="noopener noreferrer"
           className="hero-cta"
         >
-          Get a Quote
+          Book a Shoot / Get a Quote
         </a>
       </div>
     </section>
