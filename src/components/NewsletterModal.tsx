@@ -163,8 +163,8 @@ export default function NewsletterModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0, 1] }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
           onClick={handleBackdropClick}
           role="dialog"
           aria-modal="true"
@@ -172,49 +172,54 @@ export default function NewsletterModal() {
         >
           <motion.div
             ref={modalRef}
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0, 1] }}
-            className="relative bg-[#080808] border border-white/10 max-w-md w-full p-8 md:p-10"
+            exit={{ opacity: 0, scale: 0.9, y: 30 }}
+            transition={{ duration: 0.5, ease: [0.25, 0.1, 0, 1] }}
+            className="relative bg-[#080808] border border-gold/20 max-w-lg w-full overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Decorative top border */}
+            <div className="h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
+
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 text-silver hover:text-gold transition-colors duration-300 cursor-pointer"
+              className="absolute top-6 right-6 text-silver hover:text-gold transition-colors duration-300 cursor-pointer z-10"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
 
             {/* Content */}
-            <div className="text-center">
+            <div className="p-10 md:p-14 text-center">
               <h2
                 id="newsletter-modal-title"
-                className="font-display text-2xl md:text-3xl text-white font-light mb-3 italic"
+                className="font-display text-3xl md:text-4xl text-white font-light mb-4 italic leading-tight"
               >
-                Get first access.
+                Get first <em>access</em>.
               </h2>
-              <p className="font-sans text-sm text-silver font-light leading-relaxed mb-8">
+              <p className="font-sans text-sm md:text-base text-silver font-light leading-relaxed mb-10 max-w-md mx-auto">
                 New work, seasonal discounts, and open shoot dates — straight to your inbox. No spam, unsubscribe anytime.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
-                  className="w-full bg-transparent border border-white/12 text-white px-4 py-3 text-sm focus:border-gold outline-none transition-all duration-300"
-                  disabled={submitting}
-                  required
-                />
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="relative">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    className="w-full bg-transparent border-b border-white/20 text-white px-4 py-4 text-sm focus:border-gold focus:border-b-2 outline-none transition-all duration-300 placeholder:text-silver/40"
+                    disabled={submitting}
+                    required
+                  />
+                </div>
 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full bg-gold text-black hover:bg-white px-6 py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full border border-gold/30 text-gold hover:border-gold hover:bg-gold hover:text-black px-8 py-4 text-[10px] uppercase tracking-widest cursor-pointer transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitting ? "Subscribing..." : "Subscribe"}
                 </button>
@@ -226,12 +231,15 @@ export default function NewsletterModal() {
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="text-[10px] text-silver/60 hover:text-silver transition-colors duration-300 cursor-pointer underline underline-offset-2"
+                  className="text-[10px] text-silver/50 hover:text-silver transition-colors duration-300 cursor-pointer uppercase tracking-wider"
                 >
                   No thanks
                 </button>
               </form>
             </div>
+
+            {/* Decorative bottom border */}
+            <div className="h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
           </motion.div>
         </motion.div>
       )}
