@@ -10,7 +10,6 @@ import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
-import NewsletterModal from "./components/NewsletterModal";
 import QuoteConfirmation from "./pages/QuoteConfirmation";
 import NewsletterConfirmation from "./pages/NewsletterConfirmation";
 import { useEffect } from "react";
@@ -96,9 +95,6 @@ function AppContent() {
 
       {/* Floating fast-action contact links */}
       <WhatsAppButton />
-
-      {/* Newsletter signup modal with exit-intent trigger */}
-      <NewsletterModal />
     </div>
   );
 }
