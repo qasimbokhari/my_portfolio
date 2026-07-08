@@ -14,15 +14,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const apiKey = process.env.BREVO_API_KEY;
-    const templateId = process.env.BREVO_QUOTE_TEMPLATE_ID;
+    const quoteNotificationTemplateId = process.env.BREVO_QUOTE_NOTIFICATION_TEMPLATE_ID;
+    const clientReplyTemplateId = process.env.BREVO_CLIENT_REPLY_TEMPLATE_ID;
 
-    if (!apiKey || !templateId) {
+    if (!apiKey || !quoteNotificationTemplateId) {
       console.error('Missing Brevo configuration');
       return res.status(500).json({ error: 'Server configuration error' });
     }
 
-    // Send transactional email via Brevo API
-    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+    // Send quote notification to you (internal)
+    const notificationResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -30,7 +31,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         'api-key': apiKey,
       },
       body: JSON.stringify({
-        templateId: parseInt(templateId),
+        templateId: parseInt(quoteNotificationTemplateId),
         to: [{ email: 'contact@qasim.live', name: 'Qasim Bokhari' }],
         params: {
           name,
@@ -44,10 +45,35 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }),
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
+    if (!notificationResponse.ok) {
+      const errorData = await notificationResponse.json();
       console.error('Brevo API error:', errorData);
-      return res.status(500).json({ error: 'Failed to send email' });
+      return res.status(500).json({ error: 'Failed to send quote notification' });
+    }
+
+    // Send auto-reply to client (if template ID is configured)
+    if (clientReplyTemplateId) {
+      const replyResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'api-key': apiKey,
+        },
+        body: JSON.stringify({
+          templateId: parseInt(clientReplyTemplateId),
+          to: [{ email, name }],
+          params: {
+            name,
+          },
+        }),
+      });
+
+      if (!replyResponse.ok) {
+        const replyError = await replyResponse.json();
+        console.error('Client auto-reply error:', replyError);
+        // Don't fail the request if auto-reply fails - notification was sent successfully
+      }
     }
 
     return res.status(200).json({ success: true });
