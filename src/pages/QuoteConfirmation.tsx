@@ -12,7 +12,6 @@ export default function QuoteConfirmation() {
 
   useEffect(() => {
     if (import.meta.env.PROD) {
-      ReactGA.send({ hitType: "pageview", page: "/quote-confirmation" });
       trackEvent("Conversion", "Quote Confirmation Viewed", "Quote Flow");
     }
   }, []);

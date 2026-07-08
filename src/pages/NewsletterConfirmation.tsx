@@ -12,7 +12,6 @@ export default function NewsletterConfirmation() {
 
   useEffect(() => {
     if (import.meta.env.PROD) {
-      ReactGA.send({ hitType: "pageview", page: "/newsletter-confirmation" });
       trackEvent("Conversion", "Newsletter Confirmation Viewed", "Newsletter Flow");
     }
   }, []);

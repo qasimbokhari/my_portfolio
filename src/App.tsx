@@ -19,13 +19,22 @@ import ReactGA from "react-ga4";
 function AppContent() {
   const location = useLocation();
 
+  // Initialize GA4 only in production
   useEffect(() => {
-    // Initialize GA4 only in production
     if (import.meta.env.PROD) {
       ReactGA.initialize("G-WXVYRP16CK");
-      ReactGA.send("pageview");
     }
+  }, []);
 
+  // Track pageviews on route changes
+  useEffect(() => {
+    if (import.meta.env.PROD) {
+      ReactGA.send({ hitType: "pageview", page: location.pathname });
+    }
+  }, [location.pathname]);
+
+  // Intersection observer for reveal animations
+  useEffect(() => {
     const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const elements = document.querySelectorAll(".reveal, .project-item");
 
