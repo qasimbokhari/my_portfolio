@@ -10,3 +10,6 @@ secret.txt
 *.log
 .env*
 !.env.example
+
+.vercel
+.env*

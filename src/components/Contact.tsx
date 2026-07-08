@@ -1,9 +1,10 @@
 import { useState, FormEvent, useEffect, useRef } from "react";
 import { Mail, Phone, Instagram, MapPin, CheckCircle, AlertTriangle } from "lucide-react";
-import emailjs from "@emailjs/browser";
+import { useNavigate } from "react-router-dom";
 import { trackEvent } from "../utils/analytics";
 
 export default function Contact() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"form" | "booking">("form");
   
   const [name, setName] = useState("");
@@ -67,28 +68,32 @@ export default function Contact() {
 
     setSubmitting(true);
 
-    const templateParams = {
-      from_name: name,
-      name: name,
-      from_email: email,
-      email: email,
-      phone: phone,
-      project_type: projectType,
-      projectType: projectType,
-      preferred_date: preferredDate,
-      message: message,
+    const formData = {
+      name,
+      email,
+      phone,
+      projectType,
+      preferredDate,
+      message,
     };
 
-    emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      templateParams,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
+    fetch("/api/send-quote", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
     .then((response) => {
-      console.log("EmailJS Success:", response.status, response.text);
+      if (!response.ok) {
+        throw new Error("Failed to send quote request");
+      }
+      return response.json();
+    })
+    .then(() => {
       setSubmitting(false);
-      setSuccess(true);
+      trackEvent("Contact", "Quote Submitted", "Contact Form");
+      navigate("/quote-confirmation");
       
       // Reset fields
       setName("");
@@ -99,7 +104,7 @@ export default function Contact() {
       setMessage("");
     })
     .catch((err) => {
-      console.error("EmailJS Error:", err);
+      console.error("Brevo API Error:", err);
       setSubmitting(false);
       setError("Something went wrong. Please try again or reach out directly at contact@qasim.live");
     });

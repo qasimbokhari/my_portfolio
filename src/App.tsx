@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -9,10 +10,14 @@ import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import QuoteConfirmation from "./pages/QuoteConfirmation";
+import NewsletterConfirmation from "./pages/NewsletterConfirmation";
 import { useEffect } from "react";
 import ReactGA from "react-ga4";
 
-export default function App() {
+function AppContent() {
+  const location = useLocation();
+
   useEffect(() => {
     // Initialize GA4 only in production
     if (import.meta.env.PROD) {
@@ -56,28 +61,34 @@ export default function App() {
       {/* Persistent global header navigation */}
       <Header />
 
-      <main>
-        {/* Fullscreen hero section with deferred loop video */}
-        <Hero />
+      <Routes>
+        <Route path="/" element={
+          <main>
+            {/* Fullscreen hero section with deferred loop video */}
+            <Hero />
 
-        {/* Portfolio reel section containing high-resolution video and photo preview galleries */}
-        <Portfolio />
+            {/* Portfolio reel section containing high-resolution video and photo preview galleries */}
+            <Portfolio />
 
-        {/* Dynamic step-by-step commercial video workflow */}
-        <HowItWorks />
+            {/* Dynamic step-by-step commercial video workflow */}
+            <HowItWorks />
 
-        {/* Structured packages, pricing tiers, and customized quotes panel */}
-        <Services />
+            {/* Structured packages, pricing tiers, and customized quotes panel */}
+            <Services />
 
-        {/* Dynamic biographies and statistics summary */}
-        <About />
+            {/* Dynamic biographies and statistics summary */}
+            <About />
 
-        {/* Interactive customer ratings and feedback submit panel */}
-        <Testimonials />
+            {/* Interactive customer ratings and feedback submit panel */}
+            <Testimonials />
 
-        {/* Client consultations and booking interface */}
-        <Contact />
-      </main>
+            {/* Client consultations and booking interface */}
+            <Contact />
+          </main>
+        } />
+        <Route path="/quote-confirmation" element={<QuoteConfirmation />} />
+        <Route path="/newsletter-confirmation" element={<NewsletterConfirmation />} />
+      </Routes>
 
       {/* Complete copyright and social indexing */}
       <Footer />
@@ -85,5 +96,13 @@ export default function App() {
       {/* Floating fast-action contact links */}
       <WhatsAppButton />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
