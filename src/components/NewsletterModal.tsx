@@ -41,6 +41,7 @@ export default function NewsletterModal() {
 
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
+        console.log("Exit intent triggered");
         setIsOpen(true);
       }
     };
@@ -56,18 +57,20 @@ export default function NewsletterModal() {
     let timerTriggered = false;
     let scrollTriggered = false;
 
-    // 15-second timer
+    // 5-second timer for testing (was 15 seconds)
     const timer = setTimeout(() => {
       if (!scrollTriggered && !isOpen) {
+        console.log("Timer triggered");
         timerTriggered = true;
         setIsOpen(true);
       }
-    }, 15000);
+    }, 5000);
 
     // 50% scroll depth
     const handleScroll = () => {
       const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
       if (scrollPercent >= 50 && !timerTriggered && !isOpen) {
+        console.log("Scroll triggered");
         scrollTriggered = true;
         setIsOpen(true);
         document.removeEventListener("scroll", handleScroll);
