@@ -1,5 +1,3 @@
-import Cal from "@calcom/embed-react";
-
 export default function Booking() {
   return (
     <section id="booking" className="site-section">
@@ -15,12 +13,11 @@ export default function Booking() {
 
         {/* Cal.com Inline Embed */}
         <div className="booking-embed-container">
-          <Cal
-            calLink="qasim-bokhari"
-            style={{ width: "100%", height: "100%", minHeight: "600px", background: "transparent" }}
-            config={{
-              layout: "month_view",
-            }}
+          <iframe
+            src="https://cal.com/qasim-bokhari/30-minute-consultation?embed=true&layout=month_view"
+            style={{ width: "100%", height: "700px", border: "none" }}
+            title="Book a consultation"
+            loading="lazy"
           />
         </div>
       </div>
