@@ -10,9 +10,7 @@ import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
-import NewsletterModal from "./components/NewsletterModal";
 import QuoteConfirmation from "./pages/QuoteConfirmation";
-import NewsletterConfirmation from "./pages/NewsletterConfirmation";
 import { useEffect } from "react";
 import ReactGA from "react-ga4";
 
@@ -97,7 +95,6 @@ function AppContent() {
           </main>
         } />
         <Route path="/quote-confirmation" element={<QuoteConfirmation />} />
-        <Route path="/newsletter-confirmation" element={<NewsletterConfirmation />} />
       </Routes>
 
       {/* Complete copyright and social indexing */}
@@ -106,8 +103,6 @@ function AppContent() {
       {/* Floating fast-action contact links */}
       <WhatsAppButton />
 
-      {/* Newsletter signup modal with exit-intent trigger */}
-      <NewsletterModal />
     </div>
   );
 }
