@@ -41,8 +41,15 @@ async function hashIP(ip: string): Promise<string> {
 }
 
 function getClientIP(request: Request): string {
-  const cf = (request as any).cf;
-  return cf?.colo ? cf.colo : "unknown";
+  // CF-Connecting-IP is set by Cloudflare to the real visitor IP on all proxied requests
+  const cfConnectingIP = request.headers.get("CF-Connecting-IP");
+  if (cfConnectingIP) return cfConnectingIP;
+
+  // Fallback: X-Forwarded-For (first entry is the originating client IP)
+  const xForwardedFor = request.headers.get("X-Forwarded-For");
+  if (xForwardedFor) return xForwardedFor.split(",")[0].trim();
+
+  return "unknown";
 }
 
 async function checkRateLimit(env: Env, ipHash: string): Promise<boolean> {
