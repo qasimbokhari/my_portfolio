@@ -1794,12 +1794,10 @@ body::before {
 ::-webkit-scrollbar-thumb { background: var(--gold); }
 
 /* ─── CONTENT PROTECTION ─── */
-body {
+img {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-}
-img {
   -webkit-user-drag: none;
   pointer-events: none;
 }
