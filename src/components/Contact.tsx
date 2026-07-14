@@ -5,8 +5,14 @@ import { trackEvent } from "../utils/analytics";
 
 export default function Contact() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<"form" | "booking">("form");
-  
+
+  const handleBookingClick = () => {
+    const bookingSection = document.getElementById("booking");
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -14,7 +20,7 @@ export default function Contact() {
   const [preferredDate, setPreferredDate] = useState("");
   const [message, setMessage] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
-  
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -131,36 +137,19 @@ export default function Contact() {
           <p>Tell me about your vision, and let's bring it to life</p>
         </div>
 
-        {/* Cinematic Underline Tabs Selection */}
-        <div className="flex justify-center items-center gap-8 md:gap-10 mb-24 md:mb-28 contact-tabs-container">
+        {/* Quick Booking CTA */}
+        <div className="flex justify-center items-center mb-16 md:mb-20">
           <button
             type="button"
-            onClick={() => setActiveTab("form")}
-            className={`font-sans text-[11px] uppercase tracking-[0.25em] pb-2 cursor-pointer transition-all duration-300 border-b-2 ${
-              activeTab === "form"
-                ? "border-gold text-gold font-medium"
-                : "border-transparent text-silver hover:text-white"
-            }`}
+            onClick={handleBookingClick}
+            className="font-sans text-[11px] uppercase tracking-[0.25em] text-silver hover:text-gold transition-colors duration-300 cursor-pointer"
           >
-            Inquiry Form
-          </button>
-          <span className="text-white/10 font-light text-sm select-none">/</span>
-          <button
-            type="button"
-            onClick={() => setActiveTab("booking")}
-            className={`font-sans text-[11px] uppercase tracking-[0.25em] pb-2 cursor-pointer transition-all duration-300 border-b-2 ${
-              activeTab === "booking"
-                ? "border-gold text-gold font-medium"
-                : "border-transparent text-silver hover:text-white"
-            }`}
-          >
-            Direct Booking
+            Or book directly via calendar →
           </button>
         </div>
 
-        {/* Tab 1: Inquiry Form and Direct Details */}
-        {activeTab === "form" && (
-          <div className="contact-grid">
+        {/* Contact Form and Direct Details */}
+        <div className="contact-grid">
             {/* Left Column: Reach Me Directly */}
             <div className="contact-info">
               <h3>Reach Me Directly</h3>
@@ -392,91 +381,6 @@ export default function Contact() {
               )}
             </div>
           </div>
-        )}
-
-        {/* Tab 2: Cal.com Embed */}
-        {activeTab === "booking" && (
-          <div className="contact-grid">
-            {/* Left Column: Reach Me Directly */}
-            <div className="contact-info">
-              <h3>Reach Me Directly</h3>
-              <div className="contact-detail">
-                {/* Phone */}
-                <a 
-                  href="https://wa.me/923395261532" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="group block no-underline"
-                  onClick={() => trackEvent("Contact", "WhatsApp Click", "Contact Page CTA")}
-                >
-                  <span className="block contact-item-label">Phone & WhatsApp</span>
-                  <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white group-hover:text-gold transition-colors duration-300 font-light tracking-wide">
-                    +92 339 526 1532
-                  </span>
-                </a>
-                
-                {/* Email */}
-                <a 
-                  href="mailto:contact@qasim.live" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="group block no-underline"
-                >
-                  <span className="block contact-item-label">Email Address</span>
-                  <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white group-hover:text-gold transition-colors duration-300 font-light tracking-wide break-all">
-                    contact@qasim.live
-                  </span>
-                </a>
-                
-                {/* Instagram */}
-                <a 
-                  href="https://instagram.com/qasim.arw" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="group block no-underline"
-                >
-                  <span className="block contact-item-label">Instagram</span>
-                  <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white group-hover:text-gold transition-colors duration-300 font-light tracking-wide">
-                    @qasim.arw
-                  </span>
-                </a>
-                
-                {/* Location */}
-                <div className="group block">
-                  <span className="block contact-item-label">Location</span>
-                  <span className="block font-display text-[13px] sm:text-lg md:text-xl lg:text-2xl text-white font-light tracking-wide">
-                    Islamabad, Pakistan
-                  </span>
-                </div>
-              </div>
-
-              {/* Rates & Guarantee Badge */}
-              <div className="contact-badge">
-                <p>
-                  "Cinematic quality at rates that make sense for the Pakistani market."
-                </p>
-              </div>
-            </div>
-
-            {/* Right Column: Direct Booking CTA */}
-            <div className="contact-form flex flex-col justify-center items-center text-center min-h-[380px] md:min-h-[420px]">
-              <h3 className="font-display text-xl md:text-2xl text-gold font-light mb-4 italic">
-                Schedule a Consultation
-              </h3>
-              <p className="font-sans text-xs md:text-sm text-silver font-light leading-relaxed max-w-[360px] mb-8">
-                Skip the back-and-forth email process. Select a time on my calendar to book a free 30-minute consultation directly.
-              </p>
-              <a
-                href="https://cal.com/qasim-bokhari"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="form-submit block text-center no-underline max-w-[280px] mx-auto cursor-pointer"
-              >
-                <span>Open Booking Calendar</span>
-              </a>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

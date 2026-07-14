@@ -11,7 +11,7 @@ export default function Header() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const sections = ["hero", "portfolio", "how-it-works", "services", "about", "testimonials", "contact"];
+          const sections = ["hero", "portfolio", "how-it-works", "services", "about", "testimonials", "contact", "booking"];
           let currentSection = "hero";
           
           for (const section of sections) {
@@ -57,6 +57,7 @@ export default function Header() {
     { id: "about", label: "About" },
     { id: "testimonials", label: "Testimonials" },
     { id: "contact", label: "Contact" },
+    { id: "booking", label: "Booking" },
   ];
 
   return (

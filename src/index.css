@@ -1596,6 +1596,28 @@ nav::before {
 }
 .contact-header h2 em { font-style: italic; color: var(--gold); }
 .contact-header p { color: var(--silver); font-size: 0.8rem; letter-spacing: 0.15em; }
+
+/* ─── BOOKING EMBED ─── */
+.booking-embed-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--deep);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.booking-embed-container iframe {
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .booking-embed-container {
+    border-radius: 4px;
+  }
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr;

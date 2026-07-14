@@ -8,6 +8,7 @@ import Services from "./components/Services";
 import About from "./components/About";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
+import Booking from "./components/Booking";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import QuoteConfirmation from "./pages/QuoteConfirmation";
@@ -92,6 +93,9 @@ function AppContent() {
 
             {/* Client consultations and booking interface */}
             <Contact />
+
+            {/* Direct booking calendar embed */}
+            <Booking />
           </main>
         } />
         <Route path="/quote-confirmation" element={<QuoteConfirmation />} />
