@@ -95,7 +95,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services">
+    <section id="services" className="site-section">
       <div className="services-container reveal">
         <div className="services-header">
           <span className="section-label">Offerings</span>

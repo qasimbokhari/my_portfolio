@@ -51,8 +51,8 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
 
       const focusableSelector = 'button, [href], input, select, textarea, video[controls], [tabindex]:not([tabindex="-1"])';
       const focusableElements = Array.from(
-        modalRef.current.querySelectorAll(focusableSelector)
-      ) as HTMLElement[];
+        modalRef.current.querySelectorAll<HTMLElement>(focusableSelector)
+      );
 
       if (focusableElements.length === 0) return;
 
@@ -101,6 +101,7 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
             style={{ filter: "brightness(0.5)" }}
             loading="lazy"
             decoding="async"
+            className="protected-img"
             referrerPolicy="no-referrer"
             onContextMenu={(e) => e.preventDefault()}
             draggable={false}
@@ -180,7 +181,7 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
               key={iIdx}
               src={imgUrl}
               alt={`${selectedProject.title} frame ${iIdx}`}
-              className="modal-gallery-img"
+              className="modal-gallery-img protected-img"
               loading="lazy"
               decoding="async"
               referrerPolicy="no-referrer"

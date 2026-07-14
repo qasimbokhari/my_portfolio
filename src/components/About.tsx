@@ -13,7 +13,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about">
+    <section id="about" className="site-section">
       <div className="about-container reveal">
         {/* Left column for desktop */}
         <div className="about-left-col">
@@ -25,6 +25,7 @@ export default function About() {
                 alt="Qasim Bokhari"
                 loading="lazy"
                 decoding="async"
+                className="protected-img"
                 referrerPolicy="no-referrer"
                 onContextMenu={(e) => e.preventDefault()}
                 draggable={false}

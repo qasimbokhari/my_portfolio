@@ -113,7 +113,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials">
+    <section id="testimonials" className="site-section">
       <div className="testimonials-inner reveal">
         <div className="testimonials-header flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
           <div>

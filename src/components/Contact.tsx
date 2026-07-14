@@ -120,7 +120,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact">
+    <section id="contact" className="site-section">
       <div className="contact-inner reveal">
         {/* Section Header */}
         <div className="contact-header">
@@ -249,6 +249,7 @@ export default function Contact() {
                       name="company_website"
                       value={companyWebsite}
                       onChange={(e) => setCompanyWebsite(e.target.value)}
+                      className="form-input"
                       autoComplete="off"
                       tabIndex={-1}
                     />

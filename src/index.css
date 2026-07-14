@@ -90,10 +90,12 @@
   --color-surface: #1a1a1a;
 }
 
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 :root {
@@ -527,7 +529,7 @@ nav::before {
 }
 
 /* ─── SECTION COMMON ─── */
-section { padding: 120px 0; }
+.site-section { padding: 120px 0; }
 .section-label {
   font-size: 0.6rem;
   letter-spacing: 0.4em;
@@ -1794,14 +1796,14 @@ body::before {
 ::-webkit-scrollbar-thumb { background: var(--gold); }
 
 /* ─── CONTENT PROTECTION ─── */
-img {
+.protected-img {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
   pointer-events: none;
 }
-input, textarea {
+.form-input, .form-textarea {
   -webkit-user-select: text;
   -moz-user-select: text;
   user-select: text;
@@ -2165,13 +2167,13 @@ input, textarea {
 }
 
 /* ─── SECTION TRANSITIONS ─── */
-section {
+.site-section {
   transition: opacity 0.6s var(--ease-film);
 }
-section.section-entering {
+.site-section.section-entering {
   opacity: 0;
 }
-section.section-visible {
+.site-section.section-visible {
   opacity: 1;
 }
 

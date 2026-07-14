@@ -61,10 +61,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
           alt={project.title}
           loading="lazy"
           decoding="async"
-          className="project-thumb"
-          referrerPolicy="no-referrer"
-          onContextMenu={(e) => e.preventDefault()}
-          draggable={false}
+          className="project-thumb protected-img"
         />
       </motion.div>
       <div className="project-overlay">
@@ -166,7 +163,7 @@ export default function Portfolio() {
   }, [selectedProject]);
 
   return (
-    <section id="portfolio">
+    <section id="portfolio" className="site-section">
       <div className="portfolio-intro reveal">
         <span className="section-label">Selected Work</span>
         <h2>

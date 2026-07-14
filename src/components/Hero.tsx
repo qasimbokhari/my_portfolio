@@ -22,7 +22,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero">
+    <section id="hero" className="site-section">
       {/* Background Video Wrap */}
       <div className="hero-video-wrap">
         {isMobile ? (
