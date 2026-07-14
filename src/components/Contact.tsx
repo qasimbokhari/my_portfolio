@@ -1,5 +1,5 @@
 import { useState, FormEvent, useEffect, useRef } from "react";
-import { Mail, Phone, Instagram, MapPin, CheckCircle, AlertTriangle } from "lucide-react";
+import { CheckCircle, AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { trackEvent } from "../utils/analytics";
 
@@ -13,7 +13,7 @@ export default function Contact() {
   const [projectType, setProjectType] = useState("");
   const [preferredDate, setPreferredDate] = useState("");
   const [message, setMessage] = useState("");
-  const [website, setWebsite] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
   
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -49,7 +49,7 @@ export default function Contact() {
     setError("");
 
     // Honeypot check
-    if (website) {
+    if (companyWebsite) {
       setSuccess(true);
       setName("");
       setPhone("");
@@ -57,12 +57,19 @@ export default function Contact() {
       setProjectType("");
       setPreferredDate("");
       setMessage("");
-      setWebsite("");
+      setCompanyWebsite("");
       return;
     }
 
     if (!name.trim() || !email.trim() || !message.trim()) {
       setError("Please fill in your name, email address, and project details.");
+      return;
+    }
+
+    // Email regex validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      setError("Please enter a valid email address.");
       return;
     }
 
@@ -75,9 +82,10 @@ export default function Contact() {
       projectType,
       preferredDate,
       message,
+      company_website: companyWebsite,
     };
 
-    fetch("/api/send-quote", {
+    void fetch("/api/send-quote", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,6 +101,7 @@ export default function Contact() {
     .then(() => {
       setSubmitting(false);
       trackEvent("Contact", "Quote Submitted", "Contact Form");
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       navigate("/quote-confirmation");
       
       // Reset fields
@@ -233,13 +242,13 @@ export default function Contact() {
                 <form onSubmit={handleSubmit}>
                   {/* Honeypot field for bot protection */}
                   <div style={{ position: "absolute", left: "-5000px", top: "auto", width: "1px", height: "1px", overflow: "hidden" }} aria-hidden="true">
-                    <label htmlFor="website">Website</label>
+                    <label htmlFor="company_website">Company Website</label>
                     <input
-                      id="website"
+                      id="company_website"
                       type="text"
-                      name="website"
-                      value={website}
-                      onChange={(e) => setWebsite(e.target.value)}
+                      name="company_website"
+                      value={companyWebsite}
+                      onChange={(e) => setCompanyWebsite(e.target.value)}
                       autoComplete="off"
                       tabIndex={-1}
                     />
