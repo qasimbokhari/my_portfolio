@@ -55,6 +55,8 @@ const IFRAME_ERROR_PATTERNS = [
  * @returns true if the error should be suppressed, false otherwise
  */
 export function shouldSuppressError(message: unknown, source?: string): boolean {
+  // message is unknown; String() safely stringifies it but triggers a false-positive lint warning
+  // eslint-disable-next-line @typescript-eslint/no-base-to-string
   const msg = String(message || '').toLowerCase();
   const src = String(source || '').toLowerCase();
 

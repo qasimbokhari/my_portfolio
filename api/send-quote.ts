@@ -6,7 +6,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { name, email, phone, projectType, preferredDate, message } = req.body;
+    // req.body is untyped in @vercel/node; cast to typed record to prevent unsafe-any warnings
+    const { name, email, phone, projectType, preferredDate, message } = req.body as Record<string, string | undefined>;
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -46,7 +47,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     if (!notificationResponse.ok) {
-      const errorData = await notificationResponse.json();
+      // response.json() is untyped; cast to typed object to prevent unsafe-any warnings
+      const errorData = (await notificationResponse.json()) as { error?: string };
       console.error('Brevo API error:', errorData);
       return res.status(500).json({ error: 'Failed to send quote notification' });
     }
@@ -70,7 +72,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
 
       if (!replyResponse.ok) {
-        const replyError = await replyResponse.json();
+        // response.json() is untyped; cast to typed object to prevent unsafe-any warnings
+        const replyError = (await replyResponse.json()) as { error?: string };
         console.error('Client auto-reply error:', replyError);
         // Don't fail the request if auto-reply fails - notification was sent successfully
       }

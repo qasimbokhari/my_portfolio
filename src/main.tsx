@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
       return true; // Prevent default propagation
     }
     if (originalOnError) {
-      return originalOnError.apply(this, arguments as any);
+      return originalOnError.call(this, message, source, lineno, colno, error) as boolean | void;
     }
     return false;
   };
@@ -27,7 +27,8 @@ if (typeof window !== 'undefined') {
   }, true);
 
   window.addEventListener('unhandledrejection', (event) => {
-    if (shouldSuppressError(event.reason?.message || event.reason)) {
+    const reason = event.reason as Record<string, unknown> | null;
+    if (shouldSuppressError(reason?.message || event.reason)) {
       event.stopImmediatePropagation();
       event.preventDefault();
     }

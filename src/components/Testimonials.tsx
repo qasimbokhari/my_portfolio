@@ -4,9 +4,18 @@ import { Testimonial } from "../types";
 import { initialTestimonials } from "../data/portfolioData";
 import { X, Star } from "lucide-react";
 
+/** Shape returned by GET /reviews from the Cloudflare Worker (workers/review-api/src/index.ts) */
+interface ApiReview {
+  id: number;
+  name: string;
+  role: string;
+  text: string;
+  rating: number;
+  created_at: string;
+}
+
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(initialTestimonials);
-  const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Form states
@@ -21,23 +30,22 @@ export default function Testimonials() {
   // Fetch approved reviews from API on mount
   useEffect(() => {
     const fetchReviews = async () => {
-      setIsLoading(true);
       try {
-        const apiUrl = import.meta.env.VITE_REVIEWS_API_URL;
+        const apiUrl = import.meta.env.VITE_REVIEWS_API_URL as string | undefined;
         if (!apiUrl) {
           console.warn("VITE_REVIEWS_API_URL not set, using initial testimonials only");
           return;
         }
         const response = await fetch(`${apiUrl}/reviews`);
         if (response.ok) {
-          const apiReviews = await response.json();
+          const apiReviews = (await response.json()) as ApiReview[];
           // Map API response to Testimonial format (API uses 'name', frontend uses 'author')
-          const mappedReviews = apiReviews.map((r: any) => ({
+          const mappedReviews = apiReviews.map((r) => ({
             id: r.id,
             text: r.text,
             author: r.name,
             role: r.role,
-            rating: r.rating
+            rating: r.rating,
           }));
           // Merge: initialTestimonials first, then API reviews
           setTestimonials([...initialTestimonials, ...mappedReviews]);
@@ -45,11 +53,9 @@ export default function Testimonials() {
       } catch (error) {
         console.error("Failed to fetch reviews from API:", error);
         // Silently fall back to initialTestimonials
-      } finally {
-        setIsLoading(false);
       }
     };
-    fetchReviews();
+    void fetchReviews();
   }, []);
 
   const handleSubmitReview = async (e: FormEvent) => {
@@ -59,7 +65,7 @@ export default function Testimonials() {
       return;
     }
 
-    const apiUrl = import.meta.env.VITE_REVIEWS_API_URL;
+    const apiUrl = import.meta.env.VITE_REVIEWS_API_URL as string | undefined;
     if (!apiUrl) {
       setError("Review service not configured.");
       return;
@@ -95,7 +101,7 @@ export default function Testimonials() {
           setSuccess(false);
         }, 3000);
       } else {
-        const errorData = await response.json();
+        const errorData = (await response.json()) as { error?: string };
         setError(errorData.error || "Failed to submit review. Please try again.");
       }
     } catch (error) {
@@ -170,7 +176,7 @@ export default function Testimonials() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmitReview} className="review-form">
+                <form onSubmit={(e) => { void handleSubmitReview(e); }} className="review-form">
                   {error && (
                     <div className="p-3 text-xs bg-gold/10 border-l-2 border-gold text-silver mb-4">
                       {error}

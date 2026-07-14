@@ -155,7 +155,8 @@ export default function Portfolio() {
       }
     } else {
       if (window.location.hash.startsWith("#portfolio/")) {
-        if (window.history.state && window.history.state.isModal) {
+        const state = window.history.state as { isModal?: boolean } | null;
+        if (state && state.isModal) {
           window.history.back();
         } else {
           window.history.pushState(null, "", window.location.pathname + window.location.search);
