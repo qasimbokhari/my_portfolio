@@ -32,6 +32,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         'api-key': apiKey,
       },
       body: JSON.stringify({
+        sender: { email: 'contact@qasim.live', name: 'Qasim Bokhari' },
         templateId: parseInt(quoteNotificationTemplateId),
         to: [{ email: 'contact@qasim.live', name: 'Qasim Bokhari' }],
         params: {
@@ -63,6 +64,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           'api-key': apiKey,
         },
         body: JSON.stringify({
+          sender: { email: 'contact@qasim.live', name: 'Qasim Bokhari' },
           templateId: parseInt(clientReplyTemplateId),
           to: [{ email, name }],
           params: {
