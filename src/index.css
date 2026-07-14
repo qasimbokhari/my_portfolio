@@ -124,6 +124,15 @@ a, button, [role="button"], .project-item, .whatsapp-float, .form-submit, .modal
   cursor: pointer;
 }
 
+/* ─── FOOTER ─── */
+.site-footer {
+  padding: 48px 56px;
+}
+.site-footer > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ─── NAV ─── */
 nav {
   position: fixed;
@@ -1287,6 +1296,8 @@ section { padding: 120px 0; }
     margin-top: 8px !important;
     font-size: 0.65rem !important;
   }
+
+  .site-footer { padding: 32px 20px !important; }
 
 }
 

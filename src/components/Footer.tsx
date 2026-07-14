@@ -2,7 +2,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#080808] px-6 md:px-14 py-16 border-t border-white/5">
+    <footer className="site-footer bg-[#080808] border-t border-white/5">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Left: Logo */}
         <div className="font-display text-xl md:text-2xl font-light tracking-[0.1em] text-[#f0ede8]">
