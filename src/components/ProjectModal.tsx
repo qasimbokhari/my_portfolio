@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { Project } from "../types";
+import { getResponsiveImage } from "../utils/image";
 
 interface ProjectModalProps {
   selectedProject: Project;
@@ -51,7 +52,7 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
 
       const focusableSelector = 'button, [href], input, select, textarea, video[controls], [tabindex]:not([tabindex="-1"])';
       const focusableElements = Array.from(
-        modalRef.current.querySelectorAll<HTMLElement>(focusableSelector)
+          modalRef.current.querySelectorAll<HTMLElement>(focusableSelector)
       );
 
       if (focusableElements.length === 0) return;
@@ -75,6 +76,8 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
     }
   };
 
+  const responsiveHero = getResponsiveImage(selectedProject.thumbnail.folder, selectedProject.thumbnail.filename);
+
   return (
     <motion.div
       ref={modalRef}
@@ -96,7 +99,9 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
       <div className="modal-hero">
         <div className="modal-video-wrap">
           <img
-            src={selectedProject.thumbnail}
+            src={responsiveHero.src}
+            srcSet={responsiveHero.srcSet}
+            sizes="(max-width: 640px) 480px, (max-width: 1200px) 960px, 1600px"
             alt={selectedProject.title}
             style={{ filter: "brightness(0.5)" }}
             loading="lazy"
@@ -176,19 +181,24 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
 
       {selectedProject.gallery && selectedProject.gallery.length > 0 && (
         <div className="modal-gallery">
-          {selectedProject.gallery.map((imgUrl, iIdx) => (
-            <img
-              key={iIdx}
-              src={imgUrl}
-              alt={`${selectedProject.title} frame ${iIdx}`}
-              className="modal-gallery-img protected-img"
-              loading="lazy"
-              decoding="async"
-              referrerPolicy="no-referrer"
-              onContextMenu={(e) => e.preventDefault()}
-              draggable={false}
-            />
-          ))}
+          {selectedProject.gallery.map((item, iIdx) => {
+            const responsiveGalleryImg = getResponsiveImage(item.folder, item.filename);
+            return (
+              <img
+                key={iIdx}
+                src={responsiveGalleryImg.src}
+                srcSet={responsiveGalleryImg.srcSet}
+                sizes="(max-width: 640px) 480px, (max-width: 1200px) 960px, 1600px"
+                alt={`${selectedProject.title} frame ${iIdx}`}
+                className="modal-gallery-img protected-img"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
+              />
+            );
+          })}
         </div>
       )}
     </motion.div>

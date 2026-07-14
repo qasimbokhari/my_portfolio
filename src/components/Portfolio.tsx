@@ -3,15 +3,9 @@ import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { Project } from "../types";
 import { projectsData } from "../data/portfolioData";
 import { trackEvent } from "../utils/analytics";
+import { getResponsiveImage } from "../utils/image";
 
 const ProjectModal = lazy(() => import("./ProjectModal"));
-
-const getSrcSet = (url: string) => {
-  const lastDot = url.lastIndexOf(".");
-  if (lastDot === -1) return undefined;
-  const base = url.substring(0, lastDot);
-  return `${base}-480w.webp 480w, ${base}-960w.webp 960w, ${base}-1600w.webp 1600w`;
-};
 
 interface ProjectItemProps {
   project: Project;
@@ -39,6 +33,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
     }
   };
 
+  const responsiveImg = getResponsiveImage(project.thumbnail.folder, project.thumbnail.filename);
+
   return (
     <div
       ref={containerRef}
@@ -55,8 +51,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
       <motion.div style={{ y }} className="project-thumb-wrapper">
         {/* Note: Resized width-suffixed files must be generated and uploaded to the R2 bucket at the same path before this takes effect. */}
         <img
-          src={project.thumbnail}
-          srcSet={getSrcSet(project.thumbnail)}
+          src={responsiveImg.src}
+          srcSet={responsiveImg.srcSet}
           sizes="(max-width: 480px) 100vw, (max-width: 767px) 50vw, 100vw"
           alt={project.title}
           loading="lazy"

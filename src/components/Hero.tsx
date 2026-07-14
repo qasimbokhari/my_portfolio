@@ -34,7 +34,7 @@ export default function Hero() {
             loop
             playsInline
             preload="metadata"
-            poster="https://media.qasim.live/photos/thumb03-1600w.webp"
+            poster="https://media.qasim.live/photos_webpg/thumb03-1600w.webp"
             {...{ referrerPolicy: "no-referrer", fetchPriority: "high" }}
           />
         ) : (
@@ -46,7 +46,7 @@ export default function Hero() {
             loop
             playsInline
             preload="metadata"
-            poster="https://media.qasim.live/photos/thum01-1600w.webp"
+            poster="https://media.qasim.live/photos_webpg/thum01-1600w.webp"
             {...{ referrerPolicy: "no-referrer", fetchPriority: "high" }}
           />
         )}
