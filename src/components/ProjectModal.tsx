@@ -76,7 +76,11 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
     }
   };
 
-  const responsiveHero = getResponsiveImage(selectedProject.thumbnail.folder, selectedProject.thumbnail.filename);
+  const responsiveHero = getResponsiveImage(
+    selectedProject.thumbnail.folder, 
+    selectedProject.thumbnail.filename,
+    selectedProject.thumbnail.filename === "thumb08"
+  );
 
   return (
     <motion.div

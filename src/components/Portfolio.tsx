@@ -33,7 +33,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
     }
   };
 
-  const responsiveImg = getResponsiveImage(project.thumbnail.folder, project.thumbnail.filename);
+  const responsiveImg = getResponsiveImage(
+    project.thumbnail.folder, 
+    project.thumbnail.filename,
+    project.thumbnail.filename === "thumb08"
+  );
 
   return (
     <div
