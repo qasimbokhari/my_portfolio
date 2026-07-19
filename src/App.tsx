@@ -12,6 +12,8 @@ import Booking from "./components/Booking";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import QuoteConfirmation from "./pages/QuoteConfirmation";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
 import { useEffect } from "react";
@@ -123,6 +125,8 @@ function AppContent() {
           </main>
         } />
         <Route path="/quote-confirmation" element={<QuoteConfirmation />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
