@@ -1545,7 +1545,7 @@ nav::before {
   flex-direction: column;
 }
 .about-stats-block {
-  margin-top: 48px;
+  margin-top: 0;
 }
 .about-header-block h2 {
   font-family: var(--font-display);
@@ -1589,9 +1589,9 @@ nav::before {
 .about-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 48px;
-  padding-top: 48px;
+  gap: 24px;
+  margin-top: 24px;
+  padding-top: 32px;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 .stat-num {
