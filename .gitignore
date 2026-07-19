@@ -12,4 +12,3 @@ secret.txt
 !.env.example
 
 .vercel
-.env*
