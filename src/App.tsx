@@ -13,22 +13,37 @@ import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import QuoteConfirmation from "./pages/QuoteConfirmation";
 import NotFound from "./pages/NotFound";
+import CookieConsent from "./components/CookieConsent";
 import { useEffect } from "react";
 import ReactGA from "react-ga4";
 
 function AppContent() {
   const location = useLocation();
 
-  // Initialize GA4 only in production
+  // Initialize GA4 only in production after cookie consent
   useEffect(() => {
-    if (import.meta.env.PROD) {
+    if (!import.meta.env.PROD) return;
+
+    // Check if consent was already given
+    const consent = localStorage.getItem("cookie-consent");
+    if (consent === "accepted") {
       ReactGA.initialize("G-WXVYRP16CK");
     }
+
+    // Listen for consent event
+    const handleConsent = () => {
+      ReactGA.initialize("G-WXVYRP16CK");
+    };
+
+    window.addEventListener("cookie-consent-accepted", handleConsent);
+    return () => window.removeEventListener("cookie-consent-accepted", handleConsent);
   }, []);
 
   // Track pageviews on route changes
   useEffect(() => {
-    if (import.meta.env.PROD) {
+    if (!import.meta.env.PROD) return;
+    const consent = localStorage.getItem("cookie-consent");
+    if (consent === "accepted") {
       ReactGA.send({ hitType: "pageview", page: location.pathname });
     }
   }, [location.pathname]);
@@ -116,6 +131,9 @@ function AppContent() {
 
       {/* Floating fast-action contact links */}
       <WhatsAppButton />
+
+      {/* GDPR cookie consent banner */}
+      <CookieConsent />
 
     </div>
   );
