@@ -83,7 +83,7 @@ export default function Terms() {
             <section>
               <h2 className="font-display text-xl text-gold mb-4">Third-Party Tools</h2>
               <p className="text-sm text-silver leading-relaxed">
-                This site uses Cal.com for booking, Brevo for email delivery, and Google Analytics for site analytics (see Privacy Policy) — each governed by their own respective terms.
+                This site uses Cal.com for booking, Brevo for email delivery, and Google Analytics for site analytics (see <a href="/privacy" className="text-gold hover:underline">Privacy Policy</a>) — each governed by their own respective terms.
               </p>
             </section>
 
