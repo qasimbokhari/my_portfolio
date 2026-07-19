@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 
 export default function Terms() {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -15,12 +13,12 @@ export default function Terms() {
 
       <main className="pt-32 pb-24 px-6 md:px-12">
         <div className="max-w-3xl mx-auto">
-          <button
-            onClick={() => navigate("/")}
-            className="font-sans text-[11px] uppercase tracking-[0.25em] text-silver hover:text-gold transition-colors duration-300 mb-12 cursor-pointer"
+          <Link
+            to="/"
+            className="font-sans text-[11px] uppercase tracking-[0.25em] text-silver hover:text-gold transition-colors duration-300 mb-12 inline-block cursor-pointer"
           >
             ← Back to Home
-          </button>
+          </Link>
 
           <h1 className="font-display text-4xl md:text-5xl font-light text-white mb-4">
             Terms of <span className="italic text-gold">Service</span>
