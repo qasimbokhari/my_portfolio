@@ -20,6 +20,11 @@
       "src": "https://media.qasim.live/photos/logo%20180%20x%20180.png",
       "sizes": "180x180",
       "type": "image/png"
+    },
+    {
+      "src": "https://media.qasim.live/photos/logo%20512%20x%20512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }
