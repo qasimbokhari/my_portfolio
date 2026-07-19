@@ -791,6 +791,19 @@ nav::before {
 }
 .modal-gallery-img:hover { filter: grayscale(0%); }
 
+/* Full-width gallery for Gymaura and Obsydn */
+.project-modal--fullwidth .modal-gallery {
+  column-count: 1;
+  column-gap: 0;
+  padding: 0 0 80px;
+}
+.project-modal--fullwidth .modal-gallery-img {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 40px;
+  display: block;
+}
+
 .gallery-img-wrap {
   position: relative;
   display: block;

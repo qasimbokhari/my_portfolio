@@ -82,6 +82,8 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
     selectedProject.thumbnail.filename === "thumb08"
   );
 
+  const isFullWidthGallery = selectedProject.title === "Gymaura" || selectedProject.title === "Obsydn";
+
   return (
     <motion.div
       ref={modalRef}
@@ -89,7 +91,7 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0, 1] }}
-      className="project-modal open"
+      className={`project-modal open ${isFullWidthGallery ? "project-modal--fullwidth" : ""}`}
       role="dialog"
       aria-modal="true"
       onKeyDown={handleModalKeyDown}
