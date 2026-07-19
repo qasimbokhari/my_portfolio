@@ -276,6 +276,53 @@ export const projectsData: Project[] = [
       { folder: "photos", filename: "DSC09985" },
       { folder: "photos", filename: "Ismail+Mounts v (I)" }
     ]
+  },
+  {
+    id: 10,
+    title: "Gymaura",
+    category: "Activewear Brand Identity",
+    description: "A premium activewear identity built on precision, motion, and quiet power — developed in collaboration with branding designer Annas Khokhar.",
+    longDescription: "Gymaura was envisioned as a brand that rises above the ordinary, setting a new standard in premium activewear. Developed in collaboration with branding designer Annas Khokhar, the project extended beyond a fitness identity into a full cinematic system — a geometric mark built for motion, a monochrome palette that reads as strength rather than noise, and campaign films where every frame speaks to power, elegance, and focus. From packaging and hangtags to app UI and social presence, the identity was carried consistently across every touchpoint, giving Gymaura a voice that feels engineered, not decorated.",
+    thumbnail: { folder: "", filename: "thumb12" },
+    videos: null,
+    gallery: [
+      { folder: "gymaura", filename: "00" },
+      { folder: "gymaura", filename: "01" },
+      { folder: "gymaura", filename: "03" },
+      { folder: "gymaura", filename: "04" },
+      { folder: "gymaura", filename: "05" },
+      { folder: "gymaura", filename: "06" },
+      { folder: "gymaura", filename: "07" },
+      { folder: "gymaura", filename: "08" },
+      { folder: "gymaura", filename: "09" },
+      { folder: "gymaura", filename: "10" },
+      { folder: "gymaura", filename: "11" },
+      { folder: "gymaura", filename: "12" },
+      { folder: "gymaura", filename: "13" },
+      { folder: "gymaura", filename: "14" }
+    ]
+  },
+  {
+    id: 11,
+    title: "Obsydn",
+    category: "Luxury Fashion Brand Identity",
+    description: "A heritage luxury identity for the house of Obsydn, est. 1996 — created with branding designer Annas Khokhar.",
+    longDescription: "Obsydn is a luxury fashion identity built on stillness rather than spectacle, created in collaboration with branding designer Annas Khokhar. A refined serif wordmark and a palette of ivory, black, and deep burgundy set the tone for a brand that speaks quietly and lets craftsmanship carry the message. The campaign extended the identity into short cinematic vignettes — After Hours, Between Floors, Private Moments — each exploring closeness, restraint, and the atmosphere of a room rather than the garment alone. The result is a brand world that reads as established heritage, not a launch.",
+    thumbnail: { folder: "", filename: "thumb11" },
+    videos: null,
+    gallery: [
+      { folder: "obsydn", filename: "00" },
+      { folder: "obsydn", filename: "01" },
+      { folder: "obsydn", filename: "02" },
+      { folder: "obsydn", filename: "03" },
+      { folder: "obsydn", filename: "04" },
+      { folder: "obsydn", filename: "05" },
+      { folder: "obsydn", filename: "06" },
+      { folder: "obsydn", filename: "07" },
+      { folder: "obsydn", filename: "08" },
+      { folder: "obsydn", filename: "09" },
+      { folder: "obsydn", filename: "10" }
+    ]
   }
 ];
 
