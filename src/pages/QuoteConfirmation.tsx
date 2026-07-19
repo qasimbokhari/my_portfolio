@@ -19,7 +19,7 @@ export default function QuoteConfirmation() {
     <div className="relative min-h-screen bg-[#080808] selection:bg-gold selection:text-black">
       <Header />
 
-      <main className="confirm-page-main">
+      <main id="main-content" className="confirm-page-main">
         <div className="confirm-page-container">
           <CheckCircle className="confirm-page-icon animate-pulse" />
           

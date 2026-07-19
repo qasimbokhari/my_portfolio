@@ -65,6 +65,14 @@ function AppContent() {
 
   return (
     <div className="relative min-h-screen bg-[#080808] selection:bg-gold selection:text-black">
+      {/* Skip to content link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 bg-gold text-black px-4 py-2 font-sans font-medium focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        Skip to main content
+      </a>
+
       {/* Immersive cinematic entrance loading screen */}
       <LoadingScreen />
 
@@ -73,7 +81,7 @@ function AppContent() {
 
       <Routes>
         <Route path="/" element={
-          <main>
+          <main id="main-content">
             {/* Fullscreen hero section with deferred loop video */}
             <Hero />
 

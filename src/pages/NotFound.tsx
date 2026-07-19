@@ -11,7 +11,7 @@ export default function NotFound() {
     <div className="relative min-h-screen bg-[#080808] selection:bg-gold selection:text-black">
       <Header />
 
-      <main className="flex items-center justify-center min-h-[calc(100vh-80px)] px-6">
+      <main id="main-content" className="flex items-center justify-center min-h-[calc(100vh-80px)] px-6">
         <div className="text-center max-w-2xl">
           <h1 className="font-display text-[clamp(4rem,12vw,9rem)] font-light text-gold leading-none mb-6">
             404
