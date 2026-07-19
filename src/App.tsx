@@ -12,6 +12,7 @@ import Booking from "./components/Booking";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import QuoteConfirmation from "./pages/QuoteConfirmation";
+import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 import ReactGA from "react-ga4";
 
@@ -99,6 +100,7 @@ function AppContent() {
           </main>
         } />
         <Route path="/quote-confirmation" element={<QuoteConfirmation />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Complete copyright and social indexing */}
