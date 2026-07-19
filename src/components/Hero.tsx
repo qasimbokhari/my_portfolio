@@ -9,6 +9,8 @@ export default function Hero() {
     return false;
   });
 
+  const [videoError, setVideoError] = useState(false);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     const mediaQuery = window.matchMedia("(max-width: 480px)");
@@ -25,7 +27,14 @@ export default function Hero() {
     <section id="hero" className="site-section">
       {/* Background Video Wrap */}
       <div className="hero-video-wrap">
-        {isMobile ? (
+        {videoError ? (
+          <img
+            src={isMobile ? "https://media.qasim.live/photos_webpg/thumb03-1600w.webp" : "https://media.qasim.live/photos_webpg/thum01-1600w.webp"}
+            alt=""
+            className="hero-background-video"
+            {...{ referrerPolicy: "no-referrer", fetchPriority: "high" }}
+          />
+        ) : isMobile ? (
           <video
             src="https://media.qasim.live/wild.mp4"
             className="hero-background-video mobile-video"
@@ -35,6 +44,7 @@ export default function Hero() {
             playsInline
             preload="metadata"
             poster="https://media.qasim.live/photos_webpg/thumb03-1600w.webp"
+            onError={() => setVideoError(true)}
             {...{ referrerPolicy: "no-referrer", fetchPriority: "high" }}
           />
         ) : (
@@ -47,6 +57,7 @@ export default function Hero() {
             playsInline
             preload="metadata"
             poster="https://media.qasim.live/photos_webpg/thum01-1600w.webp"
+            onError={() => setVideoError(true)}
             {...{ referrerPolicy: "no-referrer", fetchPriority: "high" }}
           />
         )}
