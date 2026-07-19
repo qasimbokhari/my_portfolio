@@ -66,8 +66,12 @@ export default function Hero() {
           <em>Bokhari</em>
         </h1>
         
+        <p className="hero-role-label">
+          Creative Direction
+        </p>
+        
         <p className="hero-sub">
-          Commercial &amp; Brand Films &nbsp;·&nbsp; Photography &nbsp;·&nbsp; Motion Graphics &nbsp;·&nbsp; Branding &nbsp;·&nbsp; Event &amp; Wedding Cinematography
+          Creative Direction &nbsp;·&nbsp; Photography &nbsp;·&nbsp; Film &nbsp;·&nbsp; Brand Identity
         </p>
         
         <a

@@ -4,6 +4,16 @@ import { trackEvent } from "../utils/analytics";
 export default function Services() {
   const categories = [
     {
+      title: "Creative Direction & Brand Identity",
+      packages: [
+        {
+          name: "Brand Content Package",
+          price: "PKR 40,000 – 90,000",
+          desc: "Combined photography + video + basic motion graphics, designed to give a brand a consistent visual identity across platforms — ideal for new businesses building their first content library."
+        }
+      ]
+    },
+    {
       title: "Commercial & Brand Films",
       packages: [
         {
@@ -54,16 +64,6 @@ export default function Services() {
       ]
     },
     {
-      title: "Branding Support",
-      packages: [
-        {
-          name: "Brand Content Package",
-          price: "PKR 40,000 – 90,000",
-          desc: "Combined photography + video + basic motion graphics, designed to give a brand a consistent visual identity across platforms — ideal for new businesses building their first content library."
-        }
-      ]
-    },
-    {
       title: "Events & Weddings",
       isSecondary: true,
       packages: [
@@ -103,7 +103,7 @@ export default function Services() {
             Services &amp; <em>Pricing</em>
           </h2>
           <p className="services-intro">
-            Full-service media production — commercial video, photography, branding, and motion graphics — at some of the most competitive rates in Pakistan, without compromising on quality. Every package below can be customized to your project.
+            Creative direction and full-service media production — I lead brand strategy and visual identity, then execute through commercial video, photography, and motion graphics. Every package below can be customized to your project at competitive rates in Pakistan.
           </p>
         </div>
 

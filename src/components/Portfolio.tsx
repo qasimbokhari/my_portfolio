@@ -93,6 +93,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
 
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeFilter, setActiveFilter] = useState<"all" | "film" | "photography" | "branding">("all");
 
   // Handle Escape key to close modal
   useEffect(() => {
@@ -172,8 +173,23 @@ export default function Portfolio() {
         </h2>
       </div>
 
+      {/* Filter Buttons */}
+      <div className="portfolio-filters reveal">
+        {["all", "film", "photography", "branding"].map((filter) => (
+          <button
+            key={filter}
+            onClick={() => setActiveFilter(filter as "all" | "film" | "photography" | "branding")}
+            className={`portfolio-filter-btn ${activeFilter === filter ? "active" : ""}`}
+          >
+            {filter.charAt(0).toUpperCase() + filter.slice(1)}
+          </button>
+        ))}
+      </div>
+
       <div className="project-reel">
-        {projectsData.map((project) => (
+        {projectsData
+          .filter((project) => activeFilter === "all" || project.filterType === activeFilter)
+          .map((project) => (
           <ProjectItem
               key={project.id}
               project={project}

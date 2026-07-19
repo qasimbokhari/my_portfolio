@@ -82,7 +82,7 @@ export default function ProjectModal({ selectedProject, onClose }: ProjectModalP
     selectedProject.thumbnail.filename === "thumb08"
   );
 
-  const isFullWidthGallery = selectedProject.title === "Gymaura" || selectedProject.title === "Obsydn";
+  const isFullWidthGallery = selectedProject.layout === "fullwidth";
 
   return (
     <motion.div

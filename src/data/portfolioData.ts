@@ -8,6 +8,8 @@ export const projectsData: Project[] = [
     description: "An ongoing narrative short film set inside student hostel life, demonstrating high-end visual storytelling and cinematic video production in Islamabad.",
     longDescription: "Hostel Diaries is an ongoing short film built around the restless world of hostel life: late-night conversations, pressure disguised as jokes, friendships formed out of survival, and the strange comfort of finding family away from home.\n\nTwo teasers have already been produced, offering the first look at the film's mood, characters, and tension. The complete short film is currently in progress and will be released very soon.",
     thumbnail: { folder: "", filename: "thum01" },
+    filterType: "film",
+    layout: "standard",
     videos: [
       "https://media.qasim.live/monster%20trailer.mp4",
       "https://media.qasim.live/trailer%20hd.mp4"
@@ -26,6 +28,8 @@ export const projectsData: Project[] = [
     description: "A polished launch video and marketing campaign for NUST NEXUS, capturing dynamic campus life and professional brand storytelling in Islamabad, Pakistan.",
     longDescription: "A marketing film created for NUST NEXUS and the launch of its newly opened store. The piece presents the space as more than a shop: a student hub built around convenience, movement, collaboration, and campus energy.\n\nThe edit combines clean product coverage, environmental details, and fast campus pacing to make the store feel active, useful, and immediately connected to student life.",
     thumbnail: { folder: "", filename: "thumb02" },
+    filterType: "film",
+    layout: "standard",
     videos: [
       "https://media.qasim.live/nexus.mp4"
     ],
@@ -43,6 +47,8 @@ export const projectsData: Project[] = [
     description: "A collection of cinematic Instagram reels, vertical videos, and short-form edits optimized for high engagement and creative social media video production.",
     longDescription: "A collection of Instagram reels made for my public account, each built as a small visual experiment in pacing, rhythm, mood, and cinematic compression.\n\nThese edits explore how much atmosphere can fit inside a short format: from quiet waiting and creative blocks to motion-heavy cuts, emotional beats, and stylized everyday moments.",
     thumbnail: { folder: "", filename: "thumb03" },
+    filterType: "film",
+    layout: "standard",
     videos: [
       "https://media.qasim.live/creative%20block.mp4",
       "https://media.qasim.live/intezaar.mp4",
@@ -70,6 +76,8 @@ export const projectsData: Project[] = [
     description: "A corporate brand film and drone cinematography showcase for Aeromaverick, a startup built around engineering ambition and aerial innovation.",
     longDescription: "A team reel for Aeromaverick, a drone startup driven by engineering, experimentation, and the ambition to build smarter aerial systems.\n\nThe film focuses on the people behind the technology: hands-on work, field energy, testing moments, and the sense of momentum that comes from a young team building something real.",
     thumbnail: { folder: "", filename: "thumb04" },
+    filterType: "film",
+    layout: "standard",
     videos: [
       "https://media.qasim.live/team%20reel%20aero%20maverick.mp4"
     ],
@@ -87,6 +95,8 @@ export const projectsData: Project[] = [
     description: "A premium motion-led brand logo reveal and event opener, showcasing high-end commercial animation, visual effects, and professional video editing.",
     longDescription: "A logo reveal for NUST Orientation 25, created to give the event identity a cinematic opening moment: sharp, energetic, and polished enough to feel like the start of something important.\n\nThe animation uses motion, timing, and atmosphere to turn a static mark into a launch cue for the orientation experience, setting the tone for incoming students before the event even begins.",
     thumbnail: { folder: "", filename: "thumb05" },
+    filterType: "film",
+    layout: "standard",
     videos: [
       "https://media.qasim.live/logo%20reveal.mp4"
     ],
@@ -104,6 +114,8 @@ export const projectsData: Project[] = [
     description: "A professional travel and landscape photography series capturing mountain vistas, natural light, and the quiet scale of Kashmir's outdoor terrain.",
     longDescription: "Kashmir Travel is a photography series shaped by mountain air, winding roads, quiet villages, cold water, and the kind of light that makes every turn feel like a frame waiting to happen.\n\nThe collection moves between broad landscapes and smaller human details, aiming to preserve both the scale of the valley and the intimacy of travelling through it.",
     thumbnail: { folder: "", filename: "thumb06" },
+    filterType: "photography",
+    layout: "standard",
     videos: null,
     gallery: [
       { folder: "kashmir", filename: "DSC01245" },
@@ -146,6 +158,8 @@ export const projectsData: Project[] = [
     description: "A fine art photography series capturing wet cityscapes, street portraits, and professional low-light cinematography frames in Islamabad.",
     longDescription: "After Rain came from a spontaneous photography spree just after a storm, when the streets were still reflective and a rainbow briefly turned the whole scene into something unreal.\n\nThe series follows that small window of magic after rainfall: washed colors, wet textures, softened skies, and the feeling that ordinary places can suddenly look cinematic.",
     thumbnail: { folder: "", filename: "thumb07" },
+    filterType: "film",
+    layout: "standard",
     videos: [
       "https://media.qasim.live/00.mp4",
       "https://media.qasim.live/01.mp4",
@@ -173,6 +187,8 @@ export const projectsData: Project[] = [
     description: "Professional event photography and corporate coverage capturing live moments, ceremonies, gatherings, and high-profile events in Islamabad, Pakistan.",
     longDescription: "A photography showcase built from different event environments, focused on clean coverage, atmosphere, and the small moments that make a gathering feel alive.\n\nThe work moves between formal details and candid reactions, preserving not just what happened, but how each event felt in the room.",
     thumbnail: { folder: "", filename: "thumb08" },
+    filterType: "photography",
+    layout: "standard",
     videos: null,
     gallery: [
       { folder: "eventphotography", filename: "01" },
@@ -212,6 +228,8 @@ export const projectsData: Project[] = [
     description: "A beautiful wedding and professional portrait photography session in Saidpur, utilizing rustic heritage backdrops for stunning couple photoshoots.",
     longDescription: "A portrait session photographed in Saidpur, using the location's textured walls, old streets, and warm heritage atmosphere as a natural backdrop.\n\nThe shoot balances place and personality: portraits that feel grounded in the character of Saidpur while still keeping the subject at the center of every frame.",
     thumbnail: { folder: "", filename: "thumb09" },
+    filterType: "photography",
+    layout: "standard",
     videos: null,
     gallery: [
       { folder: "saidpur", filename: "DSC00141" },
@@ -239,6 +257,8 @@ export const projectsData: Project[] = [
     description: "A premium activewear identity built on precision, motion, and quiet power — developed in collaboration with branding designer Annas Khokhar.",
     longDescription: "Gymaura was envisioned as a brand that rises above the ordinary, setting a new standard in premium activewear. Developed in collaboration with branding designer Annas Khokhar, the project extended beyond a fitness identity into a full cinematic system — a geometric mark built for motion, a monochrome palette that reads as strength rather than noise, and campaign films where every frame speaks to power, elegance, and focus. From packaging and hangtags to app UI and social presence, the identity was carried consistently across every touchpoint, giving Gymaura a voice that feels engineered, not decorated.",
     thumbnail: { folder: "", filename: "thumb12" },
+    filterType: "branding",
+    layout: "fullwidth",
     videos: null,
     gallery: [
       { folder: "gymaura", filename: "00" },
@@ -264,6 +284,8 @@ export const projectsData: Project[] = [
     description: "A heritage luxury identity for the house of Obsydn, est. 1996 — created with branding designer Annas Khokhar.",
     longDescription: "Obsydn is a luxury fashion identity built on stillness rather than spectacle, created in collaboration with branding designer Annas Khokhar. A refined serif wordmark and a palette of ivory, black, and deep burgundy set the tone for a brand that speaks quietly and lets craftsmanship carry the message. The campaign extended the identity into short cinematic vignettes — After Hours, Between Floors, Private Moments — each exploring closeness, restraint, and the atmosphere of a room rather than the garment alone. The result is a brand world that reads as established heritage, not a launch.",
     thumbnail: { folder: "", filename: "thumb11" },
+    filterType: "branding",
+    layout: "fullwidth",
     videos: null,
     gallery: [
       { folder: "obsydn", filename: "00" },
@@ -286,6 +308,8 @@ export const projectsData: Project[] = [
     description: "A curated commercial photography portfolio spanning premium portraiture, travel landscapes, wedding shoots, and visual storytelling.",
     longDescription: "A selected photography collection pulled from different bodies of work: portraits, travel frames, event details, streets, landscapes, and personal experiments.\n\nRather than one fixed subject, this collection acts as a visual index of range: the frames that best show composition, timing, color, and the instinct to notice a scene before it disappears.",
     thumbnail: { folder: "", filename: "thumb10" },
+    filterType: "photography",
+    layout: "standard",
     videos: null,
     gallery: [
       { folder: "photos", filename: "00" },

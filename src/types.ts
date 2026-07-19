@@ -13,6 +13,8 @@ export interface Project {
   videos: string[] | null;
   gallery?: ProjectImage[];
   forceMuted?: boolean; // If true, video audio is permanently muted (e.g., due to licensed background music)
+  filterType?: "film" | "photography" | "branding"; // For portfolio filtering
+  layout?: "standard" | "fullwidth"; // For gallery layout in modal
 }
 
 export interface Testimonial {
