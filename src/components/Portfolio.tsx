@@ -57,7 +57,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, setSelectedProject }
         <img
           src={responsiveImg.src}
           srcSet={responsiveImg.srcSet}
-          sizes="(max-width: 480px) 100vw, (max-width: 767px) 50vw, 100vw"
+          sizes="(max-width: 480px) 50vw, (max-width: 767px) 50vw, 100vw"
           alt={project.title}
           loading="lazy"
           decoding="async"
